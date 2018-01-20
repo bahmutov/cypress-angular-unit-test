@@ -1,27 +1,16 @@
-# NgMount
+## NOT WORKING YET
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+If you run `$(npm bin)/cypress open` and click on "spec.ts" it does not show any errors, meaning a component has been bootstrapped. Not the HTML looks very weird and nothing is running. I assume the Angular code is running in the spec iframe and cannot cross into the app iframe where the component has been mounted.
 
-## Development server
+![Some HTML but no action](images/html-but-no-action.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+See [cypress/integration/spec.ts](cypress/integration/spec.ts) for mounting code.
 
-## Code scaffolding
+## Working
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+I have successfully used this mounting approach to test components in other frameworks.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- https://github.com/bahmutov/cypress-vue-unit-test
+- https://github.com/bahmutov/cypress-hyperapp-unit-test
+- https://github.com/bahmutov/cypress-svelte-unit-test
+- https://github.com/bahmutov/cypress-react-unit-test
