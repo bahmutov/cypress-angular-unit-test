@@ -1,5 +1,7 @@
 ## NOT WORKING YET
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/bahmutov/cypress-angular-unit-test.svg)](https://greenkeeper.io/)
+
 If you run `$(npm bin)/cypress open` and click on "spec.ts" it does not show any errors, meaning a component has been bootstrapped. Not the HTML looks very weird and nothing is running. I assume the Angular code is running in the spec iframe and cannot cross into the app iframe where the component has been mounted.
 
 ![Some HTML but no action](images/html-but-no-action.png)
