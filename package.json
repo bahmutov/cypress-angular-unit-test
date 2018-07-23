@@ -1,5 +1,5 @@
 {
-  "name": "ng-mount",
+  "name": "cypress-angular-unit-test",
   "version": "0.0.0-development",
   "license": "MIT",
   "scripts": {
