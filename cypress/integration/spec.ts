@@ -1,8 +1,8 @@
-import { AppComponent } from '../../src/app/app.component'
-import 'zone.js';
+import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Component, NgModule, ViewContainerRef, ApplicationRef } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import 'zone.js';
+import { AppComponent } from '../../src/app/app.component';
 
 // dynamic loading based on blog post
 // https://blog.angularindepth.com/how-to-manually-bootstrap-an-angular-application-9a36ccf86429
@@ -18,9 +18,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
   entryComponents: [AppComponent]
 })
 class AppModule {
-  app: ApplicationRef
+  app: ApplicationRef;
   ngDoBootstrap(app: ApplicationRef) {
-    this.app = app
+    this.app = app;
   }
 }
 
@@ -35,19 +35,21 @@ describe('AppComponent', () => {
       <body>
         <app-root></app-root>
       </body>
-    `
-    const document = (cy as any).state('document')
-    document.write(html)
-    document.close()
+    `;
+    const document = (cy as any).state('document');
+    document.write(html);
+    document.close();
 
     cy.get('app-root').then(el$ => {
       platformBrowserDynamic()
         .bootstrapModule(AppModule)
         .then(function (moduleRef) {
-          moduleRef.instance.app.bootstrap(AppComponent, el$.get(0))
-        })
-    })
-  })
+          moduleRef.instance.app.bootstrap(AppComponent, el$.get(0));
+        });
+    });
+  });
 
-  it('works', () => {})
-})
+  it('works', () => {
+    cy.contains('Welcome to app').should('be.visible');
+  });
+});
