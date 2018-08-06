@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -50,6 +52,10 @@ describe('AppComponent', () => {
   });
 
   it('works', () => {
+    cy.contains('Welcome to app').should('be.visible');
+  });
+
+  it('works again', () => {
     cy.contains('Welcome to app').should('be.visible');
   });
 });
