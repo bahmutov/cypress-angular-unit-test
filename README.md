@@ -1,4 +1,4 @@
-## BETA [![Build Status](https://travis-ci.org/bahmutov/cypress-angular-unit-test.svg?branch=master)](https://travis-ci.org/bahmutov/cypress-angular-unit-test) [renovate-app badge][renovate-badge]][renovate-app]
+## BETA [![Build Status](https://travis-ci.org/bahmutov/cypress-angular-unit-test.svg?branch=master)](https://travis-ci.org/bahmutov/cypress-angular-unit-test) [![renovate-app badge][renovate-badge]][renovate-app]
 
 If you run `$(npm bin)/cypress open` and click on "spec.ts" it does not show any errors, meaning a component has been bootstrapped. Not the HTML looks very weird and nothing is running. I assume the Angular code is running in the spec iframe and cannot cross into the app iframe where the component has been mounted.
 
