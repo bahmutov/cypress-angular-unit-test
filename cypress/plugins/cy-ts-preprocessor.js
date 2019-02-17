@@ -11,13 +11,13 @@ const webpackOptions = {
         loaders: ['ts-loader', 'angular2-template-loader'],
         exclude: [/node_modules/],
       },
-      { 
-        test: /\.(html|css)$/, 
+      {
+        test: /\.(html|css)$/,
         loader: 'raw-loader',
         exclude: /\.async\.(html|css)$/
       },
       {
-        test: /\.async\.(html|css)$/, 
+        test: /\.async\.(html|css)$/,
         loaders: ['file?name=[name].[hash].[ext]', 'extract']
       }
     ]

@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+// Required for JIT in NG-7
+import 'core-js/es7/reflect';
 import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -52,10 +54,10 @@ describe('AppComponent', () => {
   });
 
   it('works', () => {
-    cy.contains('Welcome to app').should('be.visible');
+    cy.contains('Welcome to angular-cypress-unit').should('be.visible');
   });
 
   it('works again', () => {
-    cy.contains('Welcome to app').should('be.visible');
+    cy.contains('Welcome to angular-cypress-unit').should('be.visible');
   });
 });
