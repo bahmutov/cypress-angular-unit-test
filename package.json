@@ -15,6 +15,7 @@
     "semantic-release": "semantic-release"
   },
   "private": true,
+  "files": [],
   "homepage": "https://github.com/bahmutov/cypress-angular-unit-test#readme",
   "dependencies": {
     "@angular/animations": "~7.1.0",
