@@ -9,8 +9,8 @@ node_js:
   - '10'
 script:
   - npm run cy:run
-# after_success:
-#   - npm run travis-deploy-once "npm run semantic-release"
+after_success:
+  - npm run semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
