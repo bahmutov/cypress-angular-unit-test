@@ -50,7 +50,7 @@
     "karma-coverage-istanbul-reporter": "2.0.5",
     "karma-jasmine": "1.1.2",
     "karma-jasmine-html-reporter": "0.2.2",
-    "protractor": "5.4.2",
+    "protractor": "6.0.0",
     "raw-loader": "0.5.1",
     "semantic-release": "15.13.8",
     "travis-deploy-once": "5.0.11",
