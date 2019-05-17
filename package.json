@@ -42,7 +42,7 @@
     "@types/node": "8.10.48",
     "angular2-template-loader": "0.6.2",
     "codelyzer": "4.5.0",
-    "cypress": "3.2.0",
+    "cypress": "3.3.0",
     "jasmine-core": "2.99.1",
     "jasmine-spec-reporter": "4.2.1",
     "karma": "3.1.4",
