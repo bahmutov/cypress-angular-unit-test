@@ -38,7 +38,7 @@
     "@angular/language-service": "7.2.15",
     "@cypress/webpack-preprocessor": "4.1.0",
     "@types/jasmine": "2.8.16",
-    "@types/jasminewd2": "2.0.6",
+    "@types/jasminewd2": "2.0.8",
     "@types/node": "8.10.51",
     "angular2-template-loader": "0.6.2",
     "codelyzer": "4.5.0",
