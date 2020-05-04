@@ -5,5 +5,24 @@
   "automerge": true,
   "major": {
     "automerge": false
-  }
+  },
+  "prConcurrentLimit": 2,
+  "prHourlyLimit": 2,
+  "schedule": [
+    "every weekend"
+  ],
+  "updateNotScheduled": false,
+  "timezone": "America/New_York",
+  "masterIssue": true,
+  "packageRules": [
+    {
+      "packagePatterns": [
+        "*"
+      ],
+      "excludePackagePatterns": [
+        "cypress"
+      ],
+      "enabled": false
+    }
+  ]
 }

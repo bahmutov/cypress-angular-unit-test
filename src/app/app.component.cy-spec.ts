@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+import { AppComponent } from './app.component'
 
 // Required for JIT in NG-7
 import 'core-js/es7/reflect';
@@ -6,10 +7,6 @@ import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import 'zone.js';
-import { AppComponent } from '../../src/app/app.component';
-
-// dynamic loading based on blog post
-// https://blog.angularindepth.com/how-to-manually-bootstrap-an-angular-application-9a36ccf86429
 
 @NgModule({
   declarations: [
@@ -21,16 +18,14 @@ import { AppComponent } from '../../src/app/app.component';
   providers: [],
   entryComponents: [AppComponent]
 })
-class AppModule {
+class MyTestModule {
   app: ApplicationRef;
   ngDoBootstrap(app: ApplicationRef) {
-    debugger
+    console.log('ngDoBootstrap')
     this.app = app;
   }
 }
 
-/* eslint-env mocha */
-/* global cy */
 describe('AppComponent', () => {
   beforeEach(() => {
     const html = `
@@ -44,21 +39,18 @@ describe('AppComponent', () => {
     const document = (cy as any).state('document');
     document.write(html);
     document.close();
+  })
 
+  it('works', () => {
     cy.get('app-root').then(el$ => {
+      debugger
       platformBrowserDynamic()
-        .bootstrapModule(AppModule)
+        .bootstrapModule(MyTestModule)
         .then(function (moduleRef) {
+          console.log('modulre ref', moduleRef)
           moduleRef.instance.app.bootstrap(AppComponent, el$.get(0));
         });
     });
-  });
 
-  it('works', () => {
-    cy.contains('Welcome to angular-cypress-unit').should('be.visible');
-  });
-
-  it('works again', () => {
-    cy.contains('Welcome to angular-cypress-unit').should('be.visible');
-  });
-});
+  })
+})
