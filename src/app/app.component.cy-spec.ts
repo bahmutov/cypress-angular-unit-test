@@ -1,8 +1,12 @@
 /// <reference types="cypress" />
 import { AppComponent } from './app.component'
+import {AppModule} from './app.module'
 
 // Required for JIT in NG-7
+// just trying everything at this point ...
+import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
+import 'zone.js/dist/zone';
 import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -10,13 +14,13 @@ import 'zone.js';
 
 @NgModule({
   declarations: [
-    AppComponent
+    // AppComponent
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  entryComponents: [AppComponent]
+  entryComponents: [/*AppComponent*/]
 })
 class MyTestModule {
   app: ApplicationRef;
@@ -43,13 +47,17 @@ describe('AppComponent', () => {
 
   it('works', () => {
     cy.get('app-root').then(el$ => {
-      debugger
-      platformBrowserDynamic()
-        .bootstrapModule(MyTestModule)
-        .then(function (moduleRef) {
-          console.log('modulre ref', moduleRef)
-          moduleRef.instance.app.bootstrap(AppComponent, el$.get(0));
-        });
+      console.log('before platformBrowserDynamic')
+
+      platformBrowserDynamic().bootstrapModule(AppModule)
+        .catch(err => console.error(err));
+
+      // platformBrowserDynamic()
+      //   .bootstrapModule(MyTestModule)
+      //   .then(function (moduleRef) {
+      //     console.log('modulre ref', moduleRef)
+      //     // moduleRef.instance.app.bootstrap(AppComponent, el$.get(0));
+      //   });
     });
 
   })
