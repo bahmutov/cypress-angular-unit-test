@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.802.1",
-    "@angular/cli": "7.3.9",
+    "@angular/cli": "9.1.4",
     "@angular/compiler-cli": "7.2.15",
     "@angular/language-service": "7.2.15",
     "@cypress/webpack-preprocessor": "4.1.0",
