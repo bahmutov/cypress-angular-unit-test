@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 import { AppComponent } from './app.component'
-import {AppModule} from './app.module'
+// import {AppModule} from './app.module'
 
 // Required for JIT in NG-7
 // just trying everything at this point ...
@@ -14,13 +14,13 @@ import 'zone.js';
 
 @NgModule({
   declarations: [
-    // AppComponent
+    AppComponent
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  entryComponents: [/*AppComponent*/]
+  entryComponents: [AppComponent]
 })
 class MyTestModule {
   app: ApplicationRef;
@@ -49,7 +49,7 @@ describe('AppComponent', () => {
     cy.get('app-root').then(el$ => {
       console.log('before platformBrowserDynamic')
 
-      platformBrowserDynamic().bootstrapModule(AppModule)
+      platformBrowserDynamic().bootstrapModule(MyTestModule)
         .catch(err => console.error(err));
 
       // platformBrowserDynamic()
