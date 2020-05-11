@@ -1,34 +1,46 @@
 /// <reference types="cypress" />
-import { AppComponent } from './app.component'
-// import {AppModule} from './app.module'
-
-// Required for JIT in NG-7
-// just trying everything at this point ...
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
+
+import { AppComponent } from './app.component'
+
 import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import 'zone.js';
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  entryComponents: [AppComponent]
-})
-class MyTestModule {
-  app: ApplicationRef;
-  ngDoBootstrap(app: ApplicationRef) {
-    console.log('ngDoBootstrap')
-    this.app = app;
+const bootComponent = (component: any, inputs?: object) => {
+  @NgModule({
+    declarations: [
+      component
+    ],
+    imports: [
+      BrowserModule
+    ],
+    providers: [],
+    entryComponents: [component]
+  })
+  class MyTestModule {
+    app: ApplicationRef;
+    ngDoBootstrap(app: ApplicationRef) {
+      this.app = app;
+    }
   }
-}
+
+  cy.get('app-root').then(el$ => {
+    platformBrowserDynamic().bootstrapModule(MyTestModule).then(function (moduleRef) {
+      const app = moduleRef.instance.app;
+      const componentRef = app.bootstrap(component, el$.get(0));
+
+      if (inputs) {
+        Object.keys(inputs).forEach(inputName => {
+          componentRef.instance[inputName] = inputs[inputName];
+        });
+      }
+      app.tick();
+    });
+  });
+};
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -46,19 +58,12 @@ describe('AppComponent', () => {
   })
 
   it('works', () => {
-    cy.get('app-root').then(el$ => {
-      console.log('before platformBrowserDynamic')
+    bootComponent(AppComponent)
+    cy.contains('Welcome to angular-cypress-unit!')
+  })
 
-      platformBrowserDynamic().bootstrapModule(MyTestModule)
-        .catch(err => console.error(err));
-
-      // platformBrowserDynamic()
-      //   .bootstrapModule(MyTestModule)
-      //   .then(function (moduleRef) {
-      //     console.log('modulre ref', moduleRef)
-      //     // moduleRef.instance.app.bootstrap(AppComponent, el$.get(0));
-      //   });
-    });
-
+  it.only('passes an input', () => {
+    bootComponent(AppComponent, {title: 'World'})
+    cy.contains('Welcome to World!')
   })
 })
