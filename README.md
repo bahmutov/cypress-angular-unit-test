@@ -45,6 +45,10 @@ describe('AppComponent', () => {
 
 - [examples/ng7](examples/ng7)
 
+### External
+
+- [Tour of Heroes](https://github.com/bahmutov/ng9-tour-of-heroes)
+
 ## Working
 
 I have successfully used this mounting approach to test components in other frameworks.

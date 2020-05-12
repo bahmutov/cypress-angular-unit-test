@@ -15,9 +15,10 @@
   "main": "dist",
   "types": "dist",
   "homepage": "https://github.com/bahmutov/cypress-angular-unit-test#readme",
-  "dependencies": {},
+  "dependencies": {
+    "core-js": "2.6.9"
+  },
   "devDependencies": {
-    "core-js": "2.6.9",
     "@angular/common": "7.2.16",
     "@angular/core": "7.2.16",
     "@angular/compiler": "7.2.16",
@@ -34,7 +35,6 @@
     "@angular/compiler": "*",
     "@angular/platform-browser": "*",
     "@angular/platform-browser-dynamic": "*",
-    "core-js": "*",
     "zone.js": "*"
   },
   "repository": {
