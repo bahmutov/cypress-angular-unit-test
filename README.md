@@ -1,5 +1,23 @@
 ## BETA [![renovate-app badge][renovate-badge]][renovate-app]
 
+## Goal
+
+```shell
+npm install -D cypress cypress-angular-unit-test
+```
+
+```js
+import { mount } from 'cypress-angular-unit-test'
+import { AppComponent } from './app.component'
+
+describe('AppComponent', () => {
+  it('shows the input', () => {
+    mount(AppComponent, {title: 'World'})
+    cy.contains('Welcome to World!')
+  })
+})
+```
+
 ## Working
 
 I have successfully used this mounting approach to test components in other frameworks.
