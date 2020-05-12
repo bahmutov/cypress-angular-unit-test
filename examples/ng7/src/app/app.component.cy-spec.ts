@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import { mount } from '../../lib'
+import { mount } from 'cypress-angular-unit-test'
 import { AppComponent } from './app.component'
 
 describe('AppComponent', () => {

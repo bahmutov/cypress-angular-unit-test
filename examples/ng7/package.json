@@ -1,5 +1,6 @@
 {
-  "name": "cypress-angular-unit-test",
+  "name": "examples-ng7",
+  "description": "Component testing Angular7 project using cypress-angular-unit-test",
   "version": "0.0.0-development",
   "license": "MIT",
   "scripts": {
@@ -10,13 +11,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "travis-deploy-once": "travis-deploy-once",
-    "semantic-release": "semantic-release"
+    "cy:run": "cypress run"
   },
   "private": true,
   "files": [],
-  "homepage": "https://github.com/bahmutov/cypress-angular-unit-test#readme",
   "dependencies": {
     "@angular/animations": "7.2.15",
     "@angular/common": "7.2.15",
@@ -43,6 +41,7 @@
     "angular2-template-loader": "0.6.2",
     "codelyzer": "4.5.0",
     "cypress": "4.5.0",
+    "cypress-angular-unit-test": "file:../..",
     "jasmine-core": "2.99.1",
     "jasmine-spec-reporter": "4.2.1",
     "karma": "3.1.4",
@@ -58,20 +57,5 @@
     "ts-node": "7.0.1",
     "tslint": "5.18.0",
     "typescript": "3.5.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bahmutov/cypress-angular-unit-test.git"
-  },
-  "release": {
-    "analyzeCommits": {
-      "preset": "angular",
-      "releaseRules": [
-        {
-          "type": "break",
-          "release": "major"
-        }
-      ]
-    }
   }
 }
