@@ -2,8 +2,7 @@
 // TODO what do we need from here as peer or production dependencies?
 require('core-js/es6/reflect')
 require('core-js/es7/reflect')
-
-// require('zone.js/dist/zone')
+require('zone.js/dist/zone')
 
 beforeEach(() => {
   const html = `
