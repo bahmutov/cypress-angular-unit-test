@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+// TODO what do we need from here as peer or production dependencies?
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';

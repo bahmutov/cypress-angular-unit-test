@@ -1,4 +1,4 @@
-## BETA [![renovate-app badge][renovate-badge]][renovate-app]
+## cypress-angular-unit-test BETA [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-4.5.0-brightgreen)
 
 ## Goal
 
