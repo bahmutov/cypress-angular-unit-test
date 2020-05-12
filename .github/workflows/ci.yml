@@ -1,0 +1,21 @@
+name: ci
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v1
+
+      - name: Install dependencies 📦
+        uses: cypress-io/github-action@v1
+        with:
+          runTests: false
+
+      - name: Build 🏗
+        run: npm run build
+
+      # TODO run example projects
+      # TODO public semantic release
