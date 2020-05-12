@@ -1,20 +1,19 @@
-// ***********************************************************
-// This example support/index.js is processed and
-// loaded automatically before your test files.
-//
-// This is a great place to put global configuration and
-// behavior that modifies Cypress.
-//
-// You can change the location of this file or turn off
-// automatically serving support files with the
-// 'supportFile' configuration option.
-//
-// You can read more here:
-// https://on.cypress.io/configuration
-// ***********************************************************
+/// <reference types="cypress" />
+import 'core-js/es6/reflect';
+import 'core-js/es7/reflect';
+import 'zone.js/dist/zone';
 
-// Import commands.js using ES2015 syntax:
-import './commands'
-
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+beforeEach(() => {
+  debugger
+  const html = `
+    <head>
+      <meta charset="UTF-8">
+    </head>
+    <body>
+      <cypress-root></cypress-root>
+    </body>
+  `;
+  const document = cy.state('document');
+  document.write(html);
+  document.close();
+})
