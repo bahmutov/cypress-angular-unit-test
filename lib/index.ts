@@ -1,15 +1,10 @@
-/// <reference types="cypress" />
-import 'core-js/es6/reflect';
-import 'core-js/es7/reflect';
-import 'zone.js/dist/zone';
-
-import { AppComponent } from './app.component'
-
 import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-const bootComponent = (component: any, inputs?: object) => {
+export const rootId = 'cypress-root'
+
+export const mount = (component: any, inputs?: object) => {
   @NgModule({
     declarations: [
       component
@@ -27,7 +22,7 @@ const bootComponent = (component: any, inputs?: object) => {
     }
   }
 
-  cy.get('app-root').then(el$ => {
+  cy.get(rootId).then(el$ => {
     platformBrowserDynamic().bootstrapModule(MyTestModule).then(function (moduleRef) {
       const app = moduleRef.instance.app;
       const componentRef = app.bootstrap(component, el$.get(0));
@@ -41,15 +36,3 @@ const bootComponent = (component: any, inputs?: object) => {
     });
   });
 };
-
-describe('AppComponent', () => {
-  it('works', () => {
-    bootComponent(AppComponent)
-    cy.contains('Welcome to angular-cypress-unit!')
-  })
-
-  it('passes an input', () => {
-    bootComponent(AppComponent, {title: 'World'})
-    cy.contains('Welcome to World!')
-  })
-})
