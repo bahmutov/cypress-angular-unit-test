@@ -17,5 +17,13 @@ jobs:
       - name: Build 🏗
         run: npm run build
 
-      # TODO run example projects
-      # TODO public semantic release
+      - name: ng7 example 💎
+        uses: cypress-io/github-action@v1
+        with:
+          working-directory: examples/ng7
+
+      - name: Semantic Release 🚀
+        uses: cycjimmy/semantic-release-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

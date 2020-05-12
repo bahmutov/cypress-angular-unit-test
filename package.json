@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "semantic-release": "semantic-release"
   },
   "private": false,
   "files": [
@@ -16,16 +17,25 @@
   "homepage": "https://github.com/bahmutov/cypress-angular-unit-test#readme",
   "dependencies": {},
   "devDependencies": {
+    "core-js": "2.6.9",
+    "@angular/common": "7.2.16",
     "@angular/core": "7.2.16",
+    "@angular/compiler": "7.2.16",
     "@angular/platform-browser": "7.2.16",
     "@angular/platform-browser-dynamic": "7.2.16",
     "cypress": "4.5.0",
-    "typescript": "3.8.3"
+    "typescript": "3.8.3",
+    "zone.js": "0.9.1",
+    "semantic-release": "^17.0.7"
   },
   "peerDependencies": {
+    "@angular/common": "*",
     "@angular/core": "*",
+    "@angular/compiler": "*",
     "@angular/platform-browser": "*",
-    "@angular/platform-browser-dynamic": "*"
+    "@angular/platform-browser-dynamic": "*",
+    "core-js": "*",
+    "zone.js": "*"
   },
   "repository": {
     "type": "git",

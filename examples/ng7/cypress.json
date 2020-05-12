@@ -1,5 +1,6 @@
 {
   "experimentalComponentTesting": true,
   "componentFolder": "src",
-  "testFiles": "**/*cy-spec.*"
+  "testFiles": "**/*cy-spec.*",
+  "fixturesFolder": false
 }

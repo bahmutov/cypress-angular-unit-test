@@ -1,7 +1,6 @@
 {
   "include": [
-    "integration/*.ts",
-    "../node_modules/cypress"
+    "integration/*.ts"
   ],
   "compilerOptions": {
     "emitDecoratorMetadata": true,
