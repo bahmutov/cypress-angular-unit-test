@@ -8,7 +8,15 @@ const webpackOptions = {
     rules: [
       {
         test: /\.ts$/,
-        loaders: ['ts-loader', 'angular2-template-loader'],
+        // loaders: ['ts-loader', 'angular2-template-loader'],
+        use: [{
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true
+          }
+        }, {
+          loader: 'angular2-template-loader'
+        }],
         exclude: [/node_modules/],
       },
       {
