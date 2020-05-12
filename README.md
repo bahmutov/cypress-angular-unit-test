@@ -1,4 +1,4 @@
-## cypress-angular-unit-test BETA [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-4.5.0-brightgreen)
+## cypress-angular-unit-test BETA [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-4.5.0-brightgreen) [![ci status][ci image]][ci url]
 
 ## Goal
 
@@ -32,3 +32,5 @@ I have successfully used this mounting approach to test components in other fram
 
 [renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
 [renovate-app]: https://renovateapp.com/
+[ci image]: https://github.com/bahmutov/cypress-angular-unit-test/workflows/ci/badge.svg?branch=master
+[ci url]: https://github.com/bahmutov/cypress-angular-unit-test/actions
