@@ -29,6 +29,8 @@ Configure `cypress/plugins/index.js` to transpile Angular code.
 TODO still under development
 ```
 
+See blocker issue for Angular9 [here](https://github.com/bahmutov/ng9-tour-of-heroes/issues/1)
+
 ## Use
 
 ```js
