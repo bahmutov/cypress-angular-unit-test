@@ -2,13 +2,30 @@
   "name": "cypress-angular-unit-test",
   "version": "0.0.0-development",
   "license": "MIT",
-  "scripts": {},
-  "private": true,
-  "files": [],
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "private": false,
+  "files": [
+    "support.js",
+    "dist"
+  ],
+  "main": "dist",
+  "types": "dist",
   "homepage": "https://github.com/bahmutov/cypress-angular-unit-test#readme",
   "dependencies": {},
   "devDependencies": {
-    "cypress": "4.5.0"
+    "@angular/core": "7.2.16",
+    "@angular/platform-browser": "7.2.16",
+    "@angular/platform-browser-dynamic": "7.2.16",
+    "cypress": "4.5.0",
+    "typescript": "3.8.3"
+  },
+  "peerDependencies": {
+    "@angular/core": "*",
+    "@angular/platform-browser": "*",
+    "@angular/platform-browser-dynamic": "*"
   },
   "repository": {
     "type": "git",

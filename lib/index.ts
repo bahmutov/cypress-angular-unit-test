@@ -19,6 +19,7 @@ export const mount = (component: any, inputs?: object) => {
     entryComponents: [component]
   })
   class MyTestModule {
+    // @ts-ignore
     app: ApplicationRef;
     ngDoBootstrap(app: ApplicationRef) {
       this.app = app;
@@ -32,6 +33,7 @@ export const mount = (component: any, inputs?: object) => {
 
       if (inputs) {
         Object.keys(inputs).forEach(inputName => {
+          // @ts-ignore
           componentRef.instance[inputName] = inputs[inputName];
         });
       }
