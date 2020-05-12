@@ -23,6 +23,12 @@ Enable experimental component testing mode in `cypress.json` and point at the sp
 }
 ```
 
+Configure `cypress/plugins/index.js` to transpile Angular code.
+
+```
+TODO still under development
+```
+
 ## Use
 
 ```js
@@ -38,6 +44,8 @@ describe('AppComponent', () => {
   })
 })
 ```
+
+![Demo](images/demo.gif)
 
 ## Examples
 
@@ -60,6 +68,16 @@ I have successfully used this mounting approach to test components in other fram
 * [cypress-angular-unit-test](https://github.com/bahmutov/cypress-angular-unit-test)
 * [cypress-hyperapp-unit-test](https://github.com/bahmutov/cypress-hyperapp-unit-test)
 * [cypress-angularjs-unit-test](https://github.com/bahmutov/cypress-angularjs-unit-test)
+
+## Development
+
+This project only transpiles the library, to see it in action:
+
+1. switch to the example project like `cd examples/ng7`
+2. install it with `npm i`
+3. open Cypress with `npx cypress open`
+
+Pick any component test spec file to run
 
 [renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
 [renovate-app]: https://renovateapp.com/
