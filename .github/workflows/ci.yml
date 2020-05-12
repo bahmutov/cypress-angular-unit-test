@@ -17,5 +17,9 @@ jobs:
       - name: Build 🏗
         run: npm run build
 
-      # TODO run example projects
+      - name: ng7 example 💎
+        uses: cypress-io/github-action@v1
+        with:
+          working-directory: examples/ng7
+
       # TODO public semantic release
