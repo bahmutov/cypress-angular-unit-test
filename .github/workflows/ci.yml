@@ -22,6 +22,11 @@ jobs:
         with:
           working-directory: examples/ng7
 
+      - name: ng9 example 💎
+        uses: cypress-io/github-action@v1
+        with:
+          working-directory: examples/ng9
+
       - name: Semantic Release 🚀
         uses: cycjimmy/semantic-release-action@v2
         env:
