@@ -1,6 +1,6 @@
 {
   "experimentalComponentTesting": true,
-  "componentFolder": "src/app",
+  "componentFolder": "src",
   "testFiles": "**/*cy-spec.*",
-  "defaultCommandTimeout": 10000
+  "fixturesFolder": false
 }

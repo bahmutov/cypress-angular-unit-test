@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 import {AppComponent} from './app.component';
 import {mount} from '../../../../lib';
 
