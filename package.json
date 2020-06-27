@@ -24,7 +24,7 @@
     "@angular/compiler": "7.2.16",
     "@angular/platform-browser": "7.2.16",
     "@angular/platform-browser-dynamic": "7.2.16",
-    "cypress": "4.8.0",
+    "cypress": "4.9.0",
     "typescript": "3.8.3",
     "zone.js": "0.9.1",
     "semantic-release": "^17.0.7"
