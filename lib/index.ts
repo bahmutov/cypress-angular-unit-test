@@ -1,43 +1,36 @@
-import { ApplicationRef, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { ComponentFixtureAutoDetect, getTestBed, TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
-export const rootId = 'cypress-root'
+export const rootId = 'root0'
 
-export const mount = (component: any, inputs?: object) => {
-  // TODO improve logging using a full log instance
-  cy.log(`Mounting **${component.name}**`)
+export const initEnv = (module: any, moduleDef?: TestModuleMetadata) => {
 
-  @NgModule({
-    declarations: [
-      component
-    ],
-    imports: [
-      BrowserModule
-    ],
-    providers: [],
-    entryComponents: [component]
-  })
-  class MyTestModule {
-    // @ts-ignore
-    app: ApplicationRef;
-    ngDoBootstrap(app: ApplicationRef) {
-      this.app = app;
-    }
+  if (!getTestBed().platform || !getTestBed().ngModule) {
+    TestBed.initTestEnvironment(
+      BrowserDynamicTestingModule,
+      platformBrowserDynamicTesting()
+    );
   }
 
-  cy.get(rootId, {log: false}).then(el$ => {
-    return platformBrowserDynamic().bootstrapModule(MyTestModule).then(function (moduleRef) {
-      const app = moduleRef.instance.app;
-      const componentRef = app.bootstrap(component, el$.get(0));
-
-      if (inputs) {
-        Object.keys(inputs).forEach(inputName => {
-          // @ts-ignore
-          componentRef.instance[inputName] = inputs[inputName];
-        });
-      }
-      app.tick();
-    });
+  TestBed.configureCompiler({
+    providers: [
+      { provide: ComponentFixtureAutoDetect, useValue: true },
+    ]
   });
+
+  TestBed.configureTestingModule({
+    imports: [module],
+  });
+};
+
+export const mount = (component: any, inputs?: object, moduleDef?: TestModuleMetadata) => {
+  // TODO improve logging using a full log instance
+  cy.log(`Mounting **${component.name}**`);
+
+  TestBed.compileComponents();
+  const fixture = TestBed.createComponent(component);
+  let componentInstance = fixture.componentInstance;
+  componentInstance = Object.assign(componentInstance, inputs);
+  fixture.detectChanges();
+  return fixture;
 };

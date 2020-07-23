@@ -10,7 +10,7 @@ beforeEach(() => {
       <meta charset="UTF-8">
     </head>
     <body>
-      <cypress-root></cypress-root>
+      <root0></root0>
     </body>
   `;
   const document = cy.state('document');

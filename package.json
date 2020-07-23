@@ -16,17 +16,17 @@
   "types": "dist",
   "homepage": "https://github.com/bahmutov/cypress-angular-unit-test#readme",
   "dependencies": {
-    "core-js": "2.6.9"
+    "core-js": "3.6.5"
   },
   "devDependencies": {
-    "@angular/common": "7.2.16",
-    "@angular/core": "7.2.16",
-    "@angular/compiler": "7.2.16",
-    "@angular/platform-browser": "7.2.16",
-    "@angular/platform-browser-dynamic": "7.2.16",
+    "@angular/common": "9.1.11",
+    "@angular/core": "9.1.11",
+    "@angular/compiler": "9.1.11",
+    "@angular/platform-browser": "9.1.11",
+    "@angular/platform-browser-dynamic": "9.1.11",
     "cypress": "4.6.0",
     "typescript": "3.8.3",
-    "zone.js": "0.9.1",
+    "zone.js": "0.10.3",
     "semantic-release": "^17.0.7"
   },
   "peerDependencies": {

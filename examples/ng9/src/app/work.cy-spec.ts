@@ -1,50 +1,42 @@
+import { ComponentFixtureAutoDetect, getTestBed, TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
-import {AppComponent} from './app.component'
-import {NgModule, ApplicationRef} from "@angular/core";
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
+import { AppComponent } from './app.component';
+import { AppModule } from './app.module';
+import { HeroService } from './hero.service';
 
-export const rootId = 'cypress-root'
+export const rootId = 'root0';
 
-export const mountt = (component: any, inputs?: object) => {
-  // TODO improve logging using a full log instance
-  cy.log(`Mounting **${component.name}**`)
+export const initEnv = (module: any, moduleDef?: TestModuleMetadata) => {
 
-  @NgModule({
-    declarations: [
-      component
-    ],
-    imports: [
-      BrowserModule
-    ],
-    providers: [],
-    entryComponents: [component]
-  })
-  class MyTestModule {
-    // @ts-ignore
-    app: ApplicationRef;
-
-    ngDoBootstrap(app: ApplicationRef) {
-      this.app = app;
-    }
+  if (!getTestBed().platform || !getTestBed().ngModule) {
+    TestBed.initTestEnvironment(
+      BrowserDynamicTestingModule,
+      platformBrowserDynamicTesting()
+    );
   }
 
-  cy.get(rootId).then(el$ => {
-    return platformBrowserDynamic().bootstrapModule(MyTestModule).then(function (moduleRef) {
-      const app = moduleRef.instance.app;
-      const componentRef = app.bootstrap(component, el$.get(0));
-
-      if (inputs) {
-        Object.keys(inputs).forEach(inputName => {
-          // @ts-ignore
-          componentRef.instance[inputName] = inputs[inputName];
-        });
-      }
-      app.tick();
-    });
+  TestBed.configureCompiler({
+    providers: [{ provide: ComponentFixtureAutoDetect, useValue: true }]
   });
+
+  TestBed.configureTestingModule({
+    imports: [module],
+  });
+};
+
+export const mountt = (component: any, inputs?: object, moduleDef?: TestModuleMetadata) => {
+  // TODO improve logging using a full log instance
+  cy.log(`Mounting **${component.name}**`);
+
+  TestBed.compileComponents();
+  const fixture = TestBed.createComponent(component);
+  let componentInstance = fixture.componentInstance;
+  componentInstance = Object.assign(componentInstance, inputs);
+  fixture.detectChanges();
+  return fixture;
 };
 
 describe('AppComponent', () => {
@@ -54,18 +46,43 @@ describe('AppComponent', () => {
       <meta charset="UTF-8">
     </head>
     <body>
-      <cypress-root></cypress-root>
+      <root0></root0>
     </body>
   `;
     const document = cy.state('document');
     document.write(html);
     document.close();
-  })
+  });
+
   it('shows the input', () => {
+    initEnv(AppModule);
+
+    const componentService = TestBed.inject(HeroService);
+    cy.stub(componentService, 'getHeroes').returns(['tutu']);
+
     // component + any inputs object
-    mountt(AppComponent, {title: 'World'})
+    const fixture = mountt(AppComponent, { title: 'World' });
+    console.log(fixture);
+
     // use any Cypress command afterwards
-    cy.contains('World app is running!')
-    cy.get('#twitter-logo').should('have.css', 'background-color', 'rgb(255, 0, 0)')
-  })
-})
+    cy.contains('World app is running!');
+    cy.contains('tutu');
+    cy.get('#twitter-logo').should('have.css', 'background-color', 'rgb(255, 0, 0)');
+  });
+
+  it('shows', () => {
+    initEnv(AppModule);
+
+    const componentService = TestBed.inject(HeroService);
+    cy.stub(componentService, 'getHeroes').returns(['tutu']);
+
+    // component + any inputs object
+    const fixture = mountt(AppComponent, { title: 'World' });
+    console.log(fixture);
+
+    // use any Cypress command afterwards
+    cy.contains('World app is running!');
+    cy.contains('tutu');
+    cy.get('#twitter-logo').should('have.css', 'background-color', 'rgb(255, 0, 0)');
+  });
+});
