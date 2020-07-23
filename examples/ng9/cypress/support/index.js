@@ -19,4 +19,7 @@
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+require('core-js/es/reflect')
+require('core-js/stable/reflect')
+require('core-js/features/reflect')
 require('../../../../support')

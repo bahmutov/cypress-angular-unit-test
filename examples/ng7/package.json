@@ -36,7 +36,7 @@
     "@types/node": "8.10.51",
     "angular2-template-loader": "0.6.2",
     "codelyzer": "4.5.0",
-    "cypress": "4.5.0",
+    "cypress": "4.11.0",
     "cypress-angular-unit-test": "file:../..",
     "raw-loader": "0.5.1",
     "semantic-release": "15.13.16",

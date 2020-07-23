@@ -1,7 +1,8 @@
 import { ComponentFixtureAutoDetect, getTestBed, TestBed, TestModuleMetadata } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
-import 'core-js/es6/reflect';
-import 'core-js/es7/reflect';
+import 'core-js/es/reflect';
+import 'core-js/stable/reflect';
+import 'core-js/features/reflect';
 import 'zone.js/dist/zone';
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
@@ -57,16 +58,12 @@ describe('AppComponent', () => {
   it('shows the input', () => {
     initEnv(AppModule);
 
-    const componentService = TestBed.inject(HeroService);
-    cy.stub(componentService, 'getHeroes').returns(['tutu']);
-
     // component + any inputs object
     const fixture = mountt(AppComponent, { title: 'World' });
     console.log(fixture);
 
     // use any Cypress command afterwards
     cy.contains('World app is running!');
-    cy.contains('tutu');
     cy.get('#twitter-logo').should('have.css', 'background-color', 'rgb(255, 0, 0)');
   });
 
