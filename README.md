@@ -1,4 +1,4 @@
-## cypress-angular-unit-test BETA [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-4.10.0-brightgreen) [![ci status][ci image]][ci url]
+## cypress-angular-unit-test BETA [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-4.11.0-brightgreen) [![ci status][ci image]][ci url]
 
 ## Installation
 
