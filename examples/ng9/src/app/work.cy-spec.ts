@@ -1,30 +1,34 @@
-import { ComponentFixtureAutoDetect, getTestBed, TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { ComponentFixtureAutoDetect, TestBed, TestModuleMetadata } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import 'core-js/es/reflect';
-import 'core-js/stable/reflect';
 import 'core-js/features/reflect';
+import 'core-js/stable/reflect';
 import 'zone.js/dist/zone';
 import { AppComponent } from './app.component';
-import { AppModule } from './app.module';
 import { HeroService } from './hero.service';
+import { NetworkService } from './network.service';
+import { NetworkComponent } from './network/network.component';
 
 export const rootId = 'root0';
 
-export const initEnv = (module: any, moduleDef?: TestModuleMetadata) => {
+export const initEnv = (component: any, moduleDef?: TestModuleMetadata) => {
 
-  if (!getTestBed().platform || !getTestBed().ngModule) {
-    TestBed.initTestEnvironment(
-      BrowserDynamicTestingModule,
-      platformBrowserDynamicTesting()
-    );
-  }
+  TestBed.resetTestEnvironment();
+
+  TestBed.initTestEnvironment(
+    BrowserDynamicTestingModule,
+    platformBrowserDynamicTesting()
+  );
 
   TestBed.configureCompiler({
     providers: [{ provide: ComponentFixtureAutoDetect, useValue: true }]
   });
 
   TestBed.configureTestingModule({
-    imports: [module],
+    declarations: [component],
+    imports: moduleDef ? moduleDef.imports : [],
+    providers: moduleDef ? moduleDef.providers : []
   });
 };
 
@@ -56,7 +60,7 @@ describe('AppComponent', () => {
   });
 
   it('shows the input', () => {
-    initEnv(AppModule);
+    initEnv(AppComponent);
 
     // component + any inputs object
     const fixture = mountt(AppComponent, { title: 'World' });
@@ -68,7 +72,7 @@ describe('AppComponent', () => {
   });
 
   it('shows', () => {
-    initEnv(AppModule);
+    initEnv(AppComponent);
 
     const componentService = TestBed.inject(HeroService);
     cy.stub(componentService, 'getHeroes').returns(['tutu']);
@@ -82,4 +86,35 @@ describe('AppComponent', () => {
     cy.contains('tutu');
     cy.get('#twitter-logo').should('have.css', 'background-color', 'rgb(255, 0, 0)');
   });
+
+  it('network', () => {
+    initEnv(NetworkComponent, { providers: [NetworkService], imports: [HttpClientModule] });
+    mountt(NetworkComponent);
+    cy.get('li', { timeout: 20000 }).should('have.length', 3);
+  });
+
+  it('can inspect real data in XHR', () => {
+    cy.server();
+    cy.route('/users?_limit=3').as('users')
+    initEnv(NetworkComponent, { providers: [NetworkService], imports: [HttpClientModule] });
+    mountt(NetworkComponent);
+    cy.wait('@users')
+      .its('response.body')
+      .should('have.length', 3)
+      .its('0')
+      .should('include.keys', ['id', 'name', 'username', 'email'])
+  });
+
+  it.only('can display mock XHR response', () => {
+    cy.server();
+    const users = [{ id: 1, name: 'foo' }]
+    cy.route('GET', '/users?_limit=3', users).as('users')
+    initEnv(NetworkComponent, { providers: [NetworkService], imports: [HttpClientModule] });
+    mountt(NetworkComponent);
+    cy.get('li')
+      .should('have.length', 1)
+      .first()
+      .contains('foo')
+  })
+
 });

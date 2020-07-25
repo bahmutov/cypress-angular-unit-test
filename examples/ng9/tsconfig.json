@@ -21,7 +21,10 @@
     ],
     "paths": {
       "@angular/*": [
-        "../node_modules/@angular/*"
+        "./node_modules/@angular/*"
+      ],
+      "cypress-angular-unit-test/*": [
+        "../../lib/*"
       ]
     }
   },

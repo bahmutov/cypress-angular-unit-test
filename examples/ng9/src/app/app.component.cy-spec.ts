@@ -3,20 +3,28 @@ import { mount, initEnv, getCypressTestBed } from 'cypress-angular-unit-test';
 import { AppComponent } from './app.component';
 import { HeroService } from './hero.service';
 
-describe('AppComponent', () => {
+describe('Basics', () => {
 
   beforeEach(() => {
     initEnv(AppComponent, { providers: [HeroService] });
   });
 
-  it('shows the input', () => {
+  it('shows inputs', () => {
+    mount(AppComponent, { title: 'World' });
+
+    cy.contains('World app is running!');
+    cy.contains('toto,titi');
+    cy.get('#twitter-logo').should('have.css', 'background-color', 'rgb(255, 0, 0)');
+  });
+
+  it('stub service', () => {
     const componentService = getCypressTestBed().inject(HeroService);
-    cy.stub(componentService, 'getHeroes').returns(['tutu']);
+    cy.stub(componentService, 'getHeroes').returns(['tutu', 'tata']);
 
     mount(AppComponent, { title: 'World' });
 
     cy.contains('World app is running!');
-    cy.contains('tutu');
+    cy.contains('tutu,tata');
     cy.get('#twitter-logo').should('have.css', 'background-color', 'rgb(255, 0, 0)');
   });
 });
