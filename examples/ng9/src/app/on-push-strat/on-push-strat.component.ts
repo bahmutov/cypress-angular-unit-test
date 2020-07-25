@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-on-push-strat',
-  templateUrl: './on-push-strat.component.html',
-  styleUrls: ['./on-push-strat.component.css']
+  template: '{{ data }}',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OnPushStratComponent implements OnInit {
 
