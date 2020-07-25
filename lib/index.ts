@@ -11,9 +11,8 @@ export const initEnv = (component: any, moduleDef?: TestModuleMetadata) => {
     platformBrowserDynamicTesting()
   )
 
-  TestBed.configureCompiler({
-    providers: [{ provide: ComponentFixtureAutoDetect, useValue: true }]
-  });
+  // automatic component change detection
+  moduleDef?.providers?.push({ provide: ComponentFixtureAutoDetect, useValue: true })
 
   TestBed.configureTestingModule({
     declarations: [component],
