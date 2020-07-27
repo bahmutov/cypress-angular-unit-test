@@ -6,9 +6,11 @@ import 'core-js/features/reflect';
 import 'core-js/stable/reflect';
 import 'zone.js/dist/zone';
 import { AppComponent } from './app.component';
+import { FakeComponent } from './fake.component';
 import { HeroService } from './hero.service';
 import { NetworkService } from './network.service';
 import { NetworkComponent } from './network/network.component';
+import { OnPushStratComponent } from './on-push-strat/on-push-strat.component';
 
 export const rootId = 'root0';
 
@@ -25,14 +27,18 @@ export const initEnv = (component: any, moduleDef?: TestModuleMetadata) => {
     providers: [{ provide: ComponentFixtureAutoDetect, useValue: true }]
   });
 
+  const declarations = [component];
+  if (moduleDef) {
+    declarations.push(moduleDef.declarations);
+  }
   TestBed.configureTestingModule({
-    declarations: [component],
+    declarations,
     imports: moduleDef ? moduleDef.imports : [],
     providers: moduleDef ? moduleDef.providers : []
   });
 };
 
-export const mountt = (component: any, inputs?: object, moduleDef?: TestModuleMetadata) => {
+export const mountt = (component: any, inputs?: object) => {
   // TODO improve logging using a full log instance
   cy.log(`Mounting **${component.name}**`);
 
@@ -42,6 +48,17 @@ export const mountt = (component: any, inputs?: object, moduleDef?: TestModuleMe
   componentInstance = Object.assign(componentInstance, inputs);
   fixture.detectChanges();
   return fixture;
+};
+
+export const initEnvHtml = (component: any) => {
+  initEnv(FakeComponent, { declarations: [component] });
+};
+
+export const mounttHtml = (htmlTemplate: string) => {
+  TestBed.compileComponents();
+  TestBed.overrideComponent(FakeComponent, { set: { template: htmlTemplate } });
+  const fixture = TestBed.createComponent(FakeComponent);
+  fixture.detectChanges();
 };
 
 describe('AppComponent', () => {
@@ -58,8 +75,14 @@ describe('AppComponent', () => {
     document.write(html);
     document.close();
     cy.server();
-    const users = [{ id: 1, name: 'foo' }]
+    const users = [{ id: 1, name: 'foo' }];
     cy.route('GET', '/users?_limit=3', users).as('users');
+  });
+
+  it('custom html', () => {
+    initEnvHtml(OnPushStratComponent);
+    mounttHtml('<app-on-push-strat data="Works !"></app-on-push-strat>');
+    cy.contains('Works !');
   });
 
   it('shows the input', () => {
@@ -101,7 +124,7 @@ describe('AppComponent', () => {
   });
 
   it('can inspect mocked XHR', () => {
-    const users = [{ id: 1, name: 'foo' }]
+    const users = [{ id: 1, name: 'foo' }];
     initEnv(NetworkComponent, { providers: [NetworkService], imports: [HttpClientModule] });
     mountt(NetworkComponent);
     cy.wait('@users')
@@ -110,7 +133,7 @@ describe('AppComponent', () => {
   });
 
   it('can delay and wait on XHR', () => {
-    const users = [{ id: 1, name: 'foo' }]
+    const users = [{ id: 1, name: 'foo' }];
     cy.route({
       method: 'GET',
       url: '/users?_limit=3',
@@ -120,13 +143,13 @@ describe('AppComponent', () => {
     initEnv(NetworkComponent, { providers: [NetworkService], imports: [HttpClientModule] });
     mountt(NetworkComponent);
     cy.get('li').should('have.length', 0);
-    cy.wait('@users')
+    cy.wait('@users');
     cy.get('li').should('have.length', 1);
   });
 
   describe('no mock', () => {
     beforeEach(() => {
-      cy.route('/users?_limit=3').as('users')
+      cy.route('/users?_limit=3').as('users');
     });
     it('network', () => {
       initEnv(NetworkComponent, { providers: [NetworkService], imports: [HttpClientModule] });
@@ -141,7 +164,7 @@ describe('AppComponent', () => {
         .its('response.body')
         .should('have.length', 3)
         .its('0')
-        .should('include.keys', ['id', 'name', 'username', 'email'])
+        .should('include.keys', ['id', 'name', 'username', 'email']);
     });
   });
 
