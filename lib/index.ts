@@ -23,7 +23,7 @@ export const initEnv = (component: any, moduleDef?: TestModuleMetadata) => {
 
 export const mount = (component: any, inputs?: object) => {
   checkIsComponentSpec();
-  
+
   // TODO improve logging using a full log instance
   cy.log(`Mounting **${component.name}**`);
   const fixture = TestBed.createComponent(component);
@@ -37,7 +37,7 @@ export const getCypressTestBed = () => {
   return getTestBed();
 };
 
-export const checkIsComponentSpec = () => {
+const checkIsComponentSpec = () => {
   if (!isComponentSpec()) {
     throw new Error(
       'Angular component test from an integration spec is not allowed',

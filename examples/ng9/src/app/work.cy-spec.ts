@@ -12,8 +12,6 @@ import { NetworkService } from './network.service';
 import { NetworkComponent } from './network/network.component';
 import { OnPushStratComponent } from './on-push-strat/on-push-strat.component';
 
-export const rootId = 'root0';
-
 export const initEnv = (component: any, moduleDef?: TestModuleMetadata) => {
 
   TestBed.resetTestEnvironment();
@@ -23,18 +21,21 @@ export const initEnv = (component: any, moduleDef?: TestModuleMetadata) => {
     platformBrowserDynamicTesting()
   );
 
-  TestBed.configureCompiler({
-    providers: [{ provide: ComponentFixtureAutoDetect, useValue: true }]
-  });
-
   const declarations = [component];
+  const providers = [];
+  providers.push({ provide: ComponentFixtureAutoDetect, useValue: true });
   if (moduleDef) {
-    declarations.push(moduleDef.declarations);
+    if (moduleDef.declarations) {
+      declarations.push(moduleDef.declarations);
+    }
+    if (moduleDef.providers) {
+      providers.push(moduleDef.providers);
+    }
   }
   TestBed.configureTestingModule({
     declarations,
     imports: moduleDef ? moduleDef.imports : [],
-    providers: moduleDef ? moduleDef.providers : []
+    providers
   });
 };
 
@@ -50,7 +51,7 @@ export const mountt = (component: any, inputs?: object) => {
   return fixture;
 };
 
-export const initEnvHtml = (component: any) => {
+export const initEnvHtml = (component: any): void => {
   initEnv(FakeComponent, { declarations: [component] });
 };
 
@@ -59,9 +60,11 @@ export const mounttHtml = (htmlTemplate: string) => {
   TestBed.overrideComponent(FakeComponent, { set: { template: htmlTemplate } });
   const fixture = TestBed.createComponent(FakeComponent);
   fixture.detectChanges();
+  return fixture;
 };
 
 describe('AppComponent', () => {
+
   beforeEach(() => {
     const html = `
     <head>
@@ -148,9 +151,11 @@ describe('AppComponent', () => {
   });
 
   describe('no mock', () => {
+
     beforeEach(() => {
       cy.route('/users?_limit=3').as('users');
     });
+
     it('network', () => {
       initEnv(NetworkComponent, { providers: [NetworkService], imports: [HttpClientModule] });
       mountt(NetworkComponent);
@@ -166,6 +171,7 @@ describe('AppComponent', () => {
         .its('0')
         .should('include.keys', ['id', 'name', 'username', 'email']);
     });
+
   });
 
 });
