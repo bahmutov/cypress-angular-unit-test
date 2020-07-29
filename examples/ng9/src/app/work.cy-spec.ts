@@ -1,71 +1,177 @@
-import 'core-js/es6/reflect';
-import 'core-js/es7/reflect';
+import { HttpClientModule } from '@angular/common/http';
+import { ComponentFixtureAutoDetect, TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
+import 'core-js/es/reflect';
+import 'core-js/features/reflect';
+import 'core-js/stable/reflect';
 import 'zone.js/dist/zone';
-import {AppComponent} from './app.component'
-import {NgModule, ApplicationRef} from "@angular/core";
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
+import { AppComponent } from './app.component';
+import { FakeComponent } from './fake.component';
+import { HeroService } from './hero.service';
+import { NetworkService } from './network.service';
+import { NetworkComponent } from './network/network.component';
+import { OnPushStratComponent } from './on-push-strat/on-push-strat.component';
 
-export const rootId = 'cypress-root'
+export const initEnv = (component: any, moduleDef?: TestModuleMetadata) => {
 
-export const mountt = (component: any, inputs?: object) => {
-  // TODO improve logging using a full log instance
-  cy.log(`Mounting **${component.name}**`)
+  TestBed.resetTestEnvironment();
 
-  @NgModule({
-    declarations: [
-      component
-    ],
-    imports: [
-      BrowserModule
-    ],
-    providers: [],
-    entryComponents: [component]
-  })
-  class MyTestModule {
-    // @ts-ignore
-    app: ApplicationRef;
+  TestBed.initTestEnvironment(
+    BrowserDynamicTestingModule,
+    platformBrowserDynamicTesting()
+  );
 
-    ngDoBootstrap(app: ApplicationRef) {
-      this.app = app;
+  const declarations = [component];
+  const providers = [];
+  providers.push({ provide: ComponentFixtureAutoDetect, useValue: true });
+  if (moduleDef) {
+    if (moduleDef.declarations) {
+      declarations.push(moduleDef.declarations);
+    }
+    if (moduleDef.providers) {
+      providers.push(moduleDef.providers);
     }
   }
-
-  cy.get(rootId).then(el$ => {
-    return platformBrowserDynamic().bootstrapModule(MyTestModule).then(function (moduleRef) {
-      const app = moduleRef.instance.app;
-      const componentRef = app.bootstrap(component, el$.get(0));
-
-      if (inputs) {
-        Object.keys(inputs).forEach(inputName => {
-          // @ts-ignore
-          componentRef.instance[inputName] = inputs[inputName];
-        });
-      }
-      app.tick();
-    });
+  TestBed.configureTestingModule({
+    declarations,
+    imports: moduleDef ? moduleDef.imports : [],
+    providers
   });
 };
 
+export const mountt = (component: any, inputs?: object) => {
+  // TODO improve logging using a full log instance
+  cy.log(`Mounting **${component.name}**`);
+
+  TestBed.compileComponents();
+  const fixture = TestBed.createComponent(component);
+  let componentInstance = fixture.componentInstance;
+  componentInstance = Object.assign(componentInstance, inputs);
+  fixture.detectChanges();
+  return fixture;
+};
+
+export const initEnvHtml = (component: any): void => {
+  initEnv(FakeComponent, { declarations: [component] });
+};
+
+export const mounttHtml = (htmlTemplate: string) => {
+  TestBed.compileComponents();
+  TestBed.overrideComponent(FakeComponent, { set: { template: htmlTemplate } });
+  const fixture = TestBed.createComponent(FakeComponent);
+  fixture.detectChanges();
+  return fixture;
+};
+
 describe('AppComponent', () => {
+
   beforeEach(() => {
     const html = `
     <head>
       <meta charset="UTF-8">
     </head>
     <body>
-      <cypress-root></cypress-root>
+      <root0></root0>
     </body>
   `;
     const document = cy.state('document');
     document.write(html);
     document.close();
-  })
+    cy.server();
+    const users = [{ id: 1, name: 'foo' }];
+    cy.route('GET', '/users?_limit=3', users).as('users');
+  });
+
+  it('custom html', () => {
+    initEnvHtml(OnPushStratComponent);
+    mounttHtml('<app-on-push-strat data="Works !"></app-on-push-strat>');
+    cy.contains('Works !');
+  });
+
   it('shows the input', () => {
+    initEnv(AppComponent);
+
     // component + any inputs object
-    mountt(AppComponent, {title: 'World'})
+    const fixture = mountt(AppComponent, { title: 'World' });
+    console.log(fixture);
+
     // use any Cypress command afterwards
-    cy.contains('World app is running!')
-    cy.get('#twitter-logo').should('have.css', 'background-color', 'rgb(255, 0, 0)')
-  })
-})
+    cy.contains('World app is running!');
+    cy.get('#twitter-logo').should('have.css', 'background-color', 'rgb(255, 0, 0)');
+  });
+
+  it('shows', () => {
+    initEnv(AppComponent);
+
+    const componentService = TestBed.inject(HeroService);
+    cy.stub(componentService, 'getHeroes').returns(['tutu']);
+
+    // component + any inputs object
+    const fixture = mountt(AppComponent, { title: 'World' });
+    console.log(fixture);
+
+    // use any Cypress command afterwards
+    cy.contains('World app is running!');
+    cy.contains('tutu');
+    cy.get('#twitter-logo').should('have.css', 'background-color', 'rgb(255, 0, 0)');
+  });
+
+  it('can display mock XHR response', () => {
+    initEnv(NetworkComponent, { providers: [NetworkService], imports: [HttpClientModule] });
+    mountt(NetworkComponent);
+    cy.wait('@users');
+    cy.get('li')
+      .should('have.length', 1)
+      .first()
+      .contains('foo');
+  });
+
+  it('can inspect mocked XHR', () => {
+    const users = [{ id: 1, name: 'foo' }];
+    initEnv(NetworkComponent, { providers: [NetworkService], imports: [HttpClientModule] });
+    mountt(NetworkComponent);
+    cy.wait('@users')
+      .its('response.body')
+      .should('deep.equal', users);
+  });
+
+  it('can delay and wait on XHR', () => {
+    const users = [{ id: 1, name: 'foo' }];
+    cy.route({
+      method: 'GET',
+      url: '/users?_limit=3',
+      response: users,
+      delay: 1000,
+    }).as('users');
+    initEnv(NetworkComponent, { providers: [NetworkService], imports: [HttpClientModule] });
+    mountt(NetworkComponent);
+    cy.get('li').should('have.length', 0);
+    cy.wait('@users');
+    cy.get('li').should('have.length', 1);
+  });
+
+  describe('no mock', () => {
+
+    beforeEach(() => {
+      cy.route('/users?_limit=3').as('users');
+    });
+
+    it('network', () => {
+      initEnv(NetworkComponent, { providers: [NetworkService], imports: [HttpClientModule] });
+      mountt(NetworkComponent);
+      cy.get('li', { timeout: 20000 }).should('have.length', 3);
+    });
+
+    it('can inspect real data in XHR', () => {
+      initEnv(NetworkComponent, { providers: [NetworkService], imports: [HttpClientModule] });
+      mountt(NetworkComponent);
+      cy.wait('@users')
+        .its('response.body')
+        .should('have.length', 3)
+        .its('0')
+        .should('include.keys', ['id', 'name', 'username', 'email']);
+    });
+
+  });
+
+});

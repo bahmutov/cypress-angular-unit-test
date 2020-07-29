@@ -1,8 +1,22 @@
 /// <reference types="cypress" />
-// TODO what do we need from here as peer or production dependencies?
-require('core-js/es6/reflect')
-require('core-js/es7/reflect')
 require('zone.js/dist/zone')
+
+// @ts-ignore
+const isComponentSpec = () => Cypress.spec.specType === 'component'
+
+// When running component specs, we cannot allow "cy.visit"
+// because it will wipe out our preparation work, and does not make much sense
+// thus we overwrite "cy.visit" to throw an error
+Cypress.Commands.overwrite('visit', (visit, ...args) => {
+  if (isComponentSpec()) {
+    throw new Error(
+      'cy.visit from a component spec is not allowed',
+    )
+  } else {
+    // allow regular visit to proceed
+    return visit(...args)
+  }
+})
 
 beforeEach(() => {
   const html = `
@@ -10,7 +24,7 @@ beforeEach(() => {
       <meta charset="UTF-8">
     </head>
     <body>
-      <cypress-root></cypress-root>
+      <root0></root0>
     </body>
   `;
   const document = cy.state('document');
