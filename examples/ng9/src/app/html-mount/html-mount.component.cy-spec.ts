@@ -15,7 +15,7 @@ describe('HtmlMountComponent', () => {
   });
 
   it('mount with input work', () => {
-    const fixture = mountHtml(`<app-html-mount [data]='my input'></app-html-mount>`);
+    const fixture = mountHtml(`<app-html-mount [data]="'my input'"></app-html-mount>`);
     fixture.detectChanges();
     cy.contains('works !');
     cy.contains('my input');
