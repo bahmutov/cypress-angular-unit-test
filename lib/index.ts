@@ -29,6 +29,7 @@ export const mount = (component: any, inputs?: object) => {
   const fixture = TestBed.createComponent(component);
   let componentInstance = fixture.componentInstance;
   componentInstance = Object.assign(componentInstance, inputs);
+  fixture.whenStable().then(() => fixture.detectChanges());
   fixture.detectChanges();
   return fixture;
 };
