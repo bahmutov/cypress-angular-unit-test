@@ -18,10 +18,10 @@ export const initEnv = (component: any, moduleDef?: TestModuleMetadata) => {
   providers.push({ provide: ComponentFixtureAutoDetect, useValue: true });
   if (moduleDef) {
     if (moduleDef.declarations) {
-      declarations.push(moduleDef.declarations);
+      declarations.push(...moduleDef.declarations);
     }
     if (moduleDef.providers) {
-      providers.push(moduleDef.providers);
+      providers.push(...moduleDef.providers);
     }
   }
   TestBed.configureTestingModule({
