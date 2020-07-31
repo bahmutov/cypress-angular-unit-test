@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
 require('zone.js/dist/zone');
-require("zone.js/dist/zone-testing");
 
 // @ts-ignore
 const isComponentSpec = () => Cypress.spec.specType === 'component'

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-fake',
+    selector: 'app-proxy',
     template: '',
 })
-export class FakeComponent implements OnInit {
+export class ProxyComponent implements OnInit {
 
     constructor() {
     }
