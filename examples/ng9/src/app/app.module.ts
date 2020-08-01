@@ -8,6 +8,7 @@ import { OnPushStratComponent } from './on-push-strat/on-push-strat.component';
 import { NetworkComponent } from './network/network.component';
 import { NetworkService } from './network.service';
 import { HtmlMountComponent } from './html-mount/html-mount.component';
+import { OutputSubscribeComponent } from './output-subscribe/output-subscribe.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { HtmlMountComponent } from './html-mount/html-mount.component';
     OnPushStratComponent,
     NetworkComponent,
     HtmlMountComponent,
+    OutputSubscribeComponent,
   ],
   imports: [
     BrowserModule,

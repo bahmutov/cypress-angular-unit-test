@@ -1,15 +1,16 @@
-import { ComponentFixtureAutoDetect, getTestBed, TestBed, TestModuleMetadata } from '@angular/core/testing';
+import { ComponentFixtureAutoDetect, getTestBed, TestBed, TestModuleMetadata, ComponentFixture } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { ProxyComponent } from './proxy.component';
 import { CypressAngularConfig } from './config';
+import { Type } from '@angular/core';
 
 let config = new CypressAngularConfig();
 
-export const setConfig = (c: CypressAngularConfig) => {
+export function setConfig(c: CypressAngularConfig): void {
   config = c;
 }
 
-export const initEnv = (component: any, moduleDef?: TestModuleMetadata) => {
+export function initEnv(component: any, moduleDef?: TestModuleMetadata): void {
   checkIsComponentSpec();
 
   TestBed.resetTestEnvironment();
@@ -40,7 +41,7 @@ export const initEnv = (component: any, moduleDef?: TestModuleMetadata) => {
   }).compileComponents();
 };
 
-export const mount = (component: any, inputs?: object) => {
+export function mount<T>(component: Type<T>, inputs?: object): ComponentFixture<T> {
   checkIsComponentSpec();
 
   // TODO improve logging using a full log instance
@@ -55,11 +56,11 @@ export const mount = (component: any, inputs?: object) => {
   return fixture;
 };
 
-export const initEnvHtml = (component: any): void => {
+export function initEnvHtml(component: any): void {
   initEnv(ProxyComponent, { declarations: [component] });
 };
 
-export const mountHtml = (htmlTemplate: string) => {
+export function mountHtml(htmlTemplate: string): ComponentFixture<ProxyComponent> {
   checkIsComponentSpec();
 
   cy.log(`Mounting **${htmlTemplate}**`);
@@ -73,11 +74,11 @@ export const mountHtml = (htmlTemplate: string) => {
   return fixture;
 };
 
-export const getCypressTestBed = () => {
+export function getCypressTestBed(): TestBed {
   return getTestBed();
 };
 
-const checkIsComponentSpec = () => {
+function checkIsComponentSpec(): void {
   if (!isComponentSpec()) {
     throw new Error(
       'Angular component test from an integration spec is not allowed',
@@ -86,4 +87,4 @@ const checkIsComponentSpec = () => {
 };
 
 // @ts-ignore
-const isComponentSpec = () => Cypress.spec.specType === 'component'
+function isComponentSpec(): boolean { return Cypress.spec.specType === 'component'; }
