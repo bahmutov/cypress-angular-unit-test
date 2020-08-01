@@ -1,15 +1,17 @@
-import { initEnv, mount } from 'cypress-angular-unit-test';
+import { initEnv, mount, setConfig } from 'cypress-angular-unit-test';
 import { OnPushStratComponent } from './on-push-strat.component';
 
 describe('OnPush strategy', () => {
 
   beforeEach(() => {
+    setConfig({ detectChanges: false });
     initEnv(OnPushStratComponent);
   });
 
   it('mount work', () => {
     const data = 'It works onPush';
-    mount(OnPushStratComponent, { data });
+    const fixture = mount(OnPushStratComponent, { data });
+    fixture.detectChanges();
     cy.contains(data);
   });
 

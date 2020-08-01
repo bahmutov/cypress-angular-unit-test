@@ -7,12 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { OnPushStratComponent } from './on-push-strat/on-push-strat.component';
 import { NetworkComponent } from './network/network.component';
 import { NetworkService } from './network.service';
+import { HtmlMountComponent } from './html-mount/html-mount.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OnPushStratComponent,
     NetworkComponent,
+    HtmlMountComponent,
   ],
   imports: [
     BrowserModule,

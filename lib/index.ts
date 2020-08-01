@@ -1,5 +1,13 @@
 import { ComponentFixtureAutoDetect, getTestBed, TestBed, TestModuleMetadata } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
+import { ProxyComponent } from './proxy.component';
+import { CypressAngularConfig } from './config';
+
+let config = new CypressAngularConfig();
+
+export const setConfig = (c: CypressAngularConfig) => {
+  config = c;
+}
 
 export const initEnv = (component: any, moduleDef?: TestModuleMetadata) => {
   checkIsComponentSpec();
@@ -11,13 +19,24 @@ export const initEnv = (component: any, moduleDef?: TestModuleMetadata) => {
     platformBrowserDynamicTesting()
   )
 
+  const declarations = [component];
+  const providers = [];
   // automatic component change detection
-  moduleDef?.providers?.push({ provide: ComponentFixtureAutoDetect, useValue: true })
-
+  if (config.detectChanges) {
+    providers.push({ provide: ComponentFixtureAutoDetect, useValue: true });
+  }
+  if (moduleDef) {
+    if (moduleDef.declarations) {
+      declarations.push(...moduleDef.declarations);
+    }
+    if (moduleDef.providers) {
+      providers.push(...moduleDef.providers);
+    }
+  }
   TestBed.configureTestingModule({
-    declarations: [component],
-    providers: moduleDef?.providers,
-    imports: moduleDef?.imports
+    declarations,
+    imports: moduleDef ? moduleDef.imports : [],
+    providers
   }).compileComponents();
 };
 
@@ -29,8 +48,28 @@ export const mount = (component: any, inputs?: object) => {
   const fixture = TestBed.createComponent(component);
   let componentInstance = fixture.componentInstance;
   componentInstance = Object.assign(componentInstance, inputs);
-  fixture.whenStable().then(() => fixture.detectChanges());
-  fixture.detectChanges();
+  if (config.detectChanges) {
+    fixture.whenStable().then(() => fixture.detectChanges());
+    fixture.detectChanges();
+  }
+  return fixture;
+};
+
+export const initEnvHtml = (component: any): void => {
+  initEnv(ProxyComponent, { declarations: [component] });
+};
+
+export const mountHtml = (htmlTemplate: string) => {
+  checkIsComponentSpec();
+
+  cy.log(`Mounting **${htmlTemplate}**`);
+  TestBed.compileComponents();
+  TestBed.overrideComponent(ProxyComponent, { set: { template: htmlTemplate } });
+  const fixture = TestBed.createComponent(ProxyComponent);
+  if (config.detectChanges) {
+    fixture.whenStable().then(() => fixture.detectChanges());
+    fixture.detectChanges();
+  }
   return fixture;
 };
 

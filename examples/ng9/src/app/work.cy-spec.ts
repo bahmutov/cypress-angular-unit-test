@@ -5,8 +5,8 @@ import 'core-js/es/reflect';
 import 'core-js/features/reflect';
 import 'core-js/stable/reflect';
 import 'zone.js/dist/zone';
+import { ProxyComponent } from '../../../../lib/proxy.component';
 import { AppComponent } from './app.component';
-import { FakeComponent } from './fake.component';
 import { HeroService } from './hero.service';
 import { NetworkService } from './network.service';
 import { NetworkComponent } from './network/network.component';
@@ -52,13 +52,13 @@ export const mountt = (component: any, inputs?: object) => {
 };
 
 export const initEnvHtml = (component: any): void => {
-  initEnv(FakeComponent, { declarations: [component] });
+  initEnv(ProxyComponent, { declarations: [component] });
 };
 
 export const mounttHtml = (htmlTemplate: string) => {
   TestBed.compileComponents();
-  TestBed.overrideComponent(FakeComponent, { set: { template: htmlTemplate } });
-  const fixture = TestBed.createComponent(FakeComponent);
+  TestBed.overrideComponent(ProxyComponent, { set: { template: htmlTemplate } });
+  const fixture = TestBed.createComponent(ProxyComponent);
   fixture.detectChanges();
   return fixture;
 };
