@@ -10,7 +10,7 @@ export function setConfig(c: CypressAngularConfig): void {
   config = c;
 }
 
-export function initEnv(component: any, moduleDef?: TestModuleMetadata): void {
+function init<T>(component: Type<T>, moduleDef?: TestModuleMetadata): void {
   checkIsComponentSpec();
 
   TestBed.resetTestEnvironment();
@@ -38,7 +38,12 @@ export function initEnv(component: any, moduleDef?: TestModuleMetadata): void {
     declarations,
     imports: moduleDef ? moduleDef.imports : [],
     providers
-  }).compileComponents();
+  })
+}
+
+export function initEnv<T>(component: Type<T>, moduleDef?: TestModuleMetadata): void {
+  init(component, moduleDef);
+  TestBed.compileComponents();
 };
 
 export function mount<T>(component: Type<T>, inputs?: object): ComponentFixture<T> {
@@ -56,16 +61,25 @@ export function mount<T>(component: Type<T>, inputs?: object): ComponentFixture<
   return fixture;
 };
 
-export function initEnvHtml(component: any): void {
-  initEnv(ProxyComponent, { declarations: [component] });
+export function initEnvHtml<T>(component?: Type<T>, moduleDef?: TestModuleMetadata): void {
+  if (moduleDef) {
+    if (moduleDef.declarations) {
+      moduleDef.declarations.push(component);
+    } else {
+      moduleDef.declarations = [component];
+    }
+  } else {
+    moduleDef = { declarations: [component] };
+  }
+  init(ProxyComponent, moduleDef);
 };
 
 export function mountHtml(htmlTemplate: string): ComponentFixture<ProxyComponent> {
   checkIsComponentSpec();
 
   cy.log(`Mounting **${htmlTemplate}**`);
-  TestBed.compileComponents();
   TestBed.overrideComponent(ProxyComponent, { set: { template: htmlTemplate } });
+  TestBed.compileComponents();
   const fixture = TestBed.createComponent(ProxyComponent);
   if (config.detectChanges) {
     fixture.whenStable().then(() => fixture.detectChanges());
