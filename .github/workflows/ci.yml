@@ -28,6 +28,7 @@ jobs:
           working-directory: examples/ng9
       
       - name: Upload artifact ng9
+        if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
           name: artifact-ng9
