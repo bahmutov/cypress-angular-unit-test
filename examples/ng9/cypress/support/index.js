@@ -23,3 +23,6 @@ require('core-js/es/reflect')
 require('core-js/stable/reflect')
 require('core-js/features/reflect')
 require('../../../../support')
+import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
+
+addMatchImageSnapshotCommand();

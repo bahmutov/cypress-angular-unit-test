@@ -9,6 +9,7 @@ import { NetworkComponent } from './network/network.component';
 import { NetworkService } from './network.service';
 import { HtmlMountComponent } from './html-mount/html-mount.component';
 import { OutputSubscribeComponent } from './output-subscribe/output-subscribe.component';
+import { ImageSnapshotComponent } from './image-snapshot/image-snapshot.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { OutputSubscribeComponent } from './output-subscribe/output-subscribe.co
     NetworkComponent,
     HtmlMountComponent,
     OutputSubscribeComponent,
+    ImageSnapshotComponent,
   ],
   imports: [
     BrowserModule,
