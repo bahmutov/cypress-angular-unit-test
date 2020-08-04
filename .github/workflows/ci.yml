@@ -26,6 +26,14 @@ jobs:
         uses: cypress-io/github-action@v1
         with:
           working-directory: examples/ng9
+      
+      - name: Upload artifact ng9
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact-ng9
+          path: |
+            **/screenshots/**/*(failed).png
+            **/init.diff.png
 
       - name: Semantic Release 🚀
         uses: cycjimmy/semantic-release-action@v2
