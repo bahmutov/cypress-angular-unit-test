@@ -13,9 +13,10 @@ import { ImageSnapshotComponent } from './image-snapshot/image-snapshot.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialButtonComponent } from './material-button/material-button.component';
 import { BootstrapButtonComponent } from './bootstrap-button/bootstrap-button.component';
+import { AddStyleComponent } from './add-style/add-style.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     OnPushStratComponent,
     NetworkComponent,
@@ -23,7 +24,8 @@ import { BootstrapButtonComponent } from './bootstrap-button/bootstrap-button.co
     OutputSubscribeComponent,
     ImageSnapshotComponent,
     MaterialButtonComponent,
-    BootstrapButtonComponent
+    BootstrapButtonComponent,
+      AddStyleComponent
    ],
   imports: [
     BrowserModule,
