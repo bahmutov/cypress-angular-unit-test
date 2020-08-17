@@ -45,7 +45,7 @@ export function initEnv(component: any, moduleDef?: TestModuleMetadata): void {
   const document: Document = cy.state('document');
   const el = document.getElementById('root');
   if (el === null) {
-    throw new Error("root introuvable");
+    throw new Error("root element not found");
   }
   injectStylesBeforeElement(config, document, el);
 };
