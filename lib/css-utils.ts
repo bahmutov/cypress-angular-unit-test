@@ -8,16 +8,12 @@ function insertStylesheets(
     document: Document,
     el: HTMLElement,
 ) {
-    console.log(stylesheets);
     stylesheets.forEach(href => {
         const link = document.createElement('link')
         link.type = 'text/css'
         link.rel = 'stylesheet'
         link.href = href
-        console.log(link);
-        console.log(document.body)
         document.body.insertBefore(link, el);
-        console.log(document.body)
     })
 }
 

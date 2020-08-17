@@ -15,7 +15,7 @@ import { MaterialButtonComponent } from './material-button/material-button.compo
 import { BootstrapButtonComponent } from './bootstrap-button/bootstrap-button.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     OnPushStratComponent,
     NetworkComponent,
@@ -23,7 +23,7 @@ import { BootstrapButtonComponent } from './bootstrap-button/bootstrap-button.co
     OutputSubscribeComponent,
     ImageSnapshotComponent,
     MaterialButtonComponent,
-      BootstrapButtonComponent
+    BootstrapButtonComponent
    ],
   imports: [
     BrowserModule,
