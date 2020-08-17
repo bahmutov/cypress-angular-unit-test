@@ -5,12 +5,10 @@ import 'core-js/es/reflect';
 import 'core-js/features/reflect';
 import 'core-js/stable/reflect';
 import 'zone.js/dist/zone';
-import { ProxyComponent } from '../../../../lib/proxy.component';
 import { AppComponent } from './app.component';
 import { HeroService } from './hero.service';
 import { NetworkService } from './network.service';
 import { NetworkComponent } from './network/network.component';
-import { OnPushStratComponent } from './on-push-strat/on-push-strat.component';
 
 export const initEnv = (component: any, moduleDef?: TestModuleMetadata) => {
 
@@ -51,18 +49,6 @@ export const mountt = (component: any, inputs?: object) => {
   return fixture;
 };
 
-export const initEnvHtml = (component: any): void => {
-  initEnv(ProxyComponent, { declarations: [component] });
-};
-
-export const mounttHtml = (htmlTemplate: string) => {
-  TestBed.compileComponents();
-  TestBed.overrideComponent(ProxyComponent, { set: { template: htmlTemplate } });
-  const fixture = TestBed.createComponent(ProxyComponent);
-  fixture.detectChanges();
-  return fixture;
-};
-
 describe('AppComponent', () => {
 
   beforeEach(() => {
@@ -80,12 +66,6 @@ describe('AppComponent', () => {
     cy.server();
     const users = [{ id: 1, name: 'foo' }];
     cy.route('GET', '/users?_limit=3', users).as('users');
-  });
-
-  it('custom html', () => {
-    initEnvHtml(OnPushStratComponent);
-    mounttHtml('<app-on-push-strat data="Works !"></app-on-push-strat>');
-    cy.contains('Works !');
   });
 
   it('shows the input', () => {

@@ -10,7 +10,7 @@ import { NetworkComponent } from './network/network.component';
 import { OnPushStratComponent } from './on-push-strat/on-push-strat.component';
 import { OutputSubscribeComponent } from './output-subscribe/output-subscribe.component';
 import { CapitalizePipe } from './pipes/capitalize/capitalize.pipe';
-
+import { ImageSnapshotComponent } from './image-snapshot/image-snapshot.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +21,7 @@ import { CapitalizePipe } from './pipes/capitalize/capitalize.pipe';
     OutputSubscribeComponent,
     HighlightDirective,
     CapitalizePipe
+    ImageSnapshotComponent,
   ],
   imports: [
     BrowserModule,
