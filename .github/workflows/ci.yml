@@ -1,11 +1,6 @@
 name: ci
 on: 
   [push, pull_request]
-  workflow_dispatch:
-    inputs:
-      release:
-        description: Pass true for launch release
-        required: true
 jobs:
   build:
     name: Tests

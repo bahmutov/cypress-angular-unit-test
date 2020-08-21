@@ -1,0 +1,7 @@
+name: release
+on: 
+  workflow_dispatch:
+    inputs:
+      release:
+        description: Pass true for launch release
+        required: true
