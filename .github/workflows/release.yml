@@ -5,3 +5,14 @@ on:
       release:
         description: Pass true for launch release
         required: true
+jobs:
+  build:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Semantic Release 🚀
+        uses: cycjimmy/semantic-release-action@v2
+        if: github.event.inputs.release == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
