@@ -68,6 +68,17 @@ const componentService = getCypressTestBed().inject(SomeService);
 
 ## Examples
 
+Use case | Description
+--- | ---
+[Input](examples/ng9/src/app/input) | Test inject `@Input()` value
+[Output](examples/ng9/src/app/output-subscribe) | Test catching `@Output()`
+[Bootstrap](examples/ng9/src/app/bootstrap-button) | Bootstrap integration with style : `setConfig({ stylesheet: 'https://...});`
+[Add style](examples/ng9/src/app/add-style) | Add custom style for testing : `setConfig({ style: 'p {background-color: blue;}' });`
+[HTML mount](examples/ng9/src/app/html-mount) | Mount a component with html, don't forget to call `detectChanges()` after
+[Image Snapshot](examples/ng9/src/app/image-snapshot) | Mount a component and visual asserting
+[Material](examples/ng9/src/app/material-button) | Material integration
+[OnPush strategy](examples/ng9/src/app/on-push-strat) | Component with `changeDetection: ChangeDetectionStrategy.OnPush` need call `detectChanges()`
+
 ### Internal
 
 - [examples/ng7](examples/ng7)
