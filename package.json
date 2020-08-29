@@ -21,7 +21,8 @@
     "html-loader": "1.1.0",
     "to-string-loader": "1.1.6",
     "ts-loader": "7.0.4",
-    "css-loader": "4.2.2"
+    "css-loader": "4.2.2",
+    "sass-loader": "10.0.1"
   },
   "devDependencies": {
     "@angular/common": "9.1.11",
