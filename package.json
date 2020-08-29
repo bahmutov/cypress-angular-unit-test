@@ -31,7 +31,7 @@
     "cypress": "4.12.1",
     "typescript": "4.0.2",
     "zone.js": "0.10.3",
-    "semantic-release": "^17.0.7",
+    "semantic-release": "17.1.1",
     "core-js": "3.6.5",
     "webpack": "4.44.1"
   },
