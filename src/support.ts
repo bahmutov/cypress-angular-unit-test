@@ -27,6 +27,7 @@ beforeEach(() => {
       <root0 id="root"></root0>
     </body>
   `;
+  // @ts-ignore
   const document = cy.state('document');
   document.write(html);
   document.close();

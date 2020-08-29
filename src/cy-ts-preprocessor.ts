@@ -1,4 +1,4 @@
-const wp = require('@cypress/webpack-preprocessor')
+import preprocessor from '@cypress/webpack-preprocessor'
 
 const webpackOptions = {
   resolve: {
@@ -8,7 +8,6 @@ const webpackOptions = {
     rules: [
       {
         test: /\.ts$/,
-        // loaders: ['ts-loader', 'angular2-template-loader'],
         use: [{
           loader: 'ts-loader',
           options: {
@@ -20,7 +19,7 @@ const webpackOptions = {
         exclude: [/node_modules/],
       },
       {
-        test: /\.(css)$/,
+        test: /\.(css|scss)$/,
         loaders: ['to-string-loader', 'css-loader', 'sass-loader'],
         exclude: /\.async\.(css)$/
       },
@@ -41,4 +40,4 @@ const options = {
   webpackOptions
 }
 
-module.exports = wp(options)
+module.exports = preprocessor(options)

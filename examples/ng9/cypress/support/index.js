@@ -22,7 +22,7 @@
 require('core-js/es/reflect')
 require('core-js/stable/reflect')
 require('core-js/features/reflect')
-require('cypress-angular-unit-test/support')
+require('cypress-angular-unit-test/dist/support')
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
 
 addMatchImageSnapshotCommand();

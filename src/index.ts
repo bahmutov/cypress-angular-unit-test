@@ -11,7 +11,7 @@ export function setConfig(c: CypressAngularConfig): void {
   config = c;
 }
 
-export function initEnv(component: any, moduleDef?: TestModuleMetadata): void {
+export function initEnv<T>(component: Type<T>, moduleDef?: TestModuleMetadata): void {
   checkIsComponentSpec();
 
   TestBed.resetTestEnvironment();
@@ -65,7 +65,7 @@ export function mount<T>(component: Type<T>, inputs?: object): ComponentFixture<
   return fixture;
 };
 
-export function initEnvHtml(component: any): void {
+export function initEnvHtml<T>(component: Type<T>): void {
   initEnv(ProxyComponent, { declarations: [component] });
 };
 
