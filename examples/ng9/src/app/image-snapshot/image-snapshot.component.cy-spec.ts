@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import { mount, initEnv, getCypressTestBed } from 'cypress-angular-unit-test';
+import { mount, initEnv } from 'cypress-angular-unit-test';
 import { ImageSnapshotComponent } from './image-snapshot.component';
 
 describe('ImageSnapshotComponent', () => {

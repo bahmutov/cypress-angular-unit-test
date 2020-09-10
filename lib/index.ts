@@ -3,6 +3,7 @@ import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@ang
 import { ProxyComponent } from './proxy.component';
 import { CypressAngularConfig } from './config';
 import { Type } from '@angular/core';
+import { injectStylesBeforeElement } from './css-utils';
 
 let config = new CypressAngularConfig();
 
@@ -38,12 +39,15 @@ function init<T>(component: Type<T>, moduleDef?: TestModuleMetadata): void {
     declarations,
     imports: moduleDef ? moduleDef.imports : [],
     providers
-  })
-}
+  }).compileComponents();
 
-export function initEnv<T>(component: Type<T>, moduleDef?: TestModuleMetadata): void {
-  init(component, moduleDef);
-  TestBed.compileComponents();
+  // @ts-ignore
+  const document: Document = cy.state('document');
+  const el = document.getElementById('root');
+  if (el === null) {
+    throw new Error("root element not found");
+  }
+  injectStylesBeforeElement(config, document, el);
 };
 
 export function mount<T>(component: Type<T>, inputs?: object): ComponentFixture<T> {

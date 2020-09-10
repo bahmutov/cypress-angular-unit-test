@@ -73,7 +73,6 @@ describe('AppComponent', () => {
 
     // component + any inputs object
     const fixture = mountt(AppComponent, { title: 'World' });
-    console.log(fixture);
 
     // use any Cypress command afterwards
     cy.contains('World app is running!');
@@ -88,7 +87,6 @@ describe('AppComponent', () => {
 
     // component + any inputs object
     const fixture = mountt(AppComponent, { title: 'World' });
-    console.log(fixture);
 
     // use any Cypress command afterwards
     cy.contains('World app is running!');
