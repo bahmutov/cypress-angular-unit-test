@@ -24,7 +24,7 @@ beforeEach(() => {
       <meta charset="UTF-8">
     </head>
     <body>
-      <root0></root0>
+      <root0 id="root"></root0>
     </body>
   `;
   const document = cy.state('document');
