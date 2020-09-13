@@ -39,7 +39,7 @@ function init<T>(component: Type<T>, moduleDef?: TestModuleMetadata): void {
     declarations,
     imports: moduleDef ? moduleDef.imports : [],
     providers
-  }).compileComponents();
+  });
 
   // @ts-ignore
   const document: Document = cy.state('document');
@@ -48,6 +48,11 @@ function init<T>(component: Type<T>, moduleDef?: TestModuleMetadata): void {
     throw new Error("root element not found");
   }
   injectStylesBeforeElement(config, document, el);
+};
+
+export function initEnv<T>(component: Type<T>, moduleDef?: TestModuleMetadata): void {
+  init(component, moduleDef);
+  TestBed.compileComponents();
 };
 
 export function mount<T>(component: Type<T>, inputs?: object): ComponentFixture<T> {
