@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "docker:run": "docker run -it -v ${PWD}:/e2e -w /e2e -e CYPRESS_updateSnapshots cypress/included:4.10.0"
+    "docker:run": "docker run -it -v ${PWD}:/e2e -w /e2e -e CYPRESS_updateSnapshots cypress/included:5.1.0"
   },
   "private": true,
   "dependencies": {
@@ -38,7 +38,7 @@
     "@types/node": "~8.9.4",
     "angular2-template-loader": "0.6.2",
     "codelyzer": "^5.0.0",
-    "cypress": "4.10.0",
+    "cypress": "5.1.0",
     "cypress-angular-unit-test": "file:../..",
     "cypress-image-snapshot": "3.1.1",
     "html-loader": "1.1.0",

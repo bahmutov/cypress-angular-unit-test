@@ -78,6 +78,8 @@ Use case | Description
 [Image Snapshot](examples/ng9/src/app/image-snapshot) | Mount a component and visual asserting
 [Material](examples/ng9/src/app/material-button) | Material integration
 [OnPush strategy](examples/ng9/src/app/on-push-strat) | Component with `changeDetection: ChangeDetectionStrategy.OnPush` need call `detectChanges()`
+[Directive](examples/ng9/src/app/directives/highlight) | Test directive with mountHtml
+[Pipe](examples/ng9/src/app/pipes/capitalize) | Test pipe with mountHtml
 
 ### Internal
 
