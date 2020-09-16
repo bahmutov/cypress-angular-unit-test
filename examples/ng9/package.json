@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "docker:run": "docker run -it -v ${PWD}:/e2e -w /e2e -e CYPRESS_updateSnapshots cypress/included:4.10.0"
+    "docker:run": "docker run -it -v ${PWD}:/e2e -w /e2e -e CYPRESS_updateSnapshots cypress/included:5.1.0"
   },
   "private": true,
   "dependencies": {
