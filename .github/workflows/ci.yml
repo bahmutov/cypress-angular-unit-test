@@ -22,16 +22,16 @@ jobs:
         with:
           working-directory: examples/ng7
 
-      - name: ng9 example 💎
+      - name: ngx example 💎
         uses: cypress-io/github-action@v1
         with:
-          working-directory: examples/ng9
+          working-directory: examples
       
-      - name: Upload artifact ng9
+      - name: Upload artifact ngx
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
-          name: artifact-ng9
+          name: artifact-ngx
           path: |
             **/screenshots/**/*(failed).png
             **/init.diff.png
