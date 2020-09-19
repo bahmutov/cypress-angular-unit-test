@@ -80,6 +80,7 @@ Use case | Description
 [OnPush strategy](examples/ng9/src/app/on-push-strat) | Component with `changeDetection: ChangeDetectionStrategy.OnPush` need call `detectChanges()`
 [Directive](examples/ng9/src/app/directives/highlight) | Test directive with mountHtml
 [Pipe](examples/ng9/src/app/pipes/capitalize) | Test pipe with mountHtml
+[Stub service](examples/ng9/src/app/service-stub) | Stub a service with Observable
 
 ### Internal
 
