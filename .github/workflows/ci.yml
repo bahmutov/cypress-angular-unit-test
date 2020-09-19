@@ -17,21 +17,16 @@ jobs:
       - name: Build 🏗
         run: npm run build
 
-      - name: ng7 example 💎
-        uses: cypress-io/github-action@v1
-        with:
-          working-directory: examples/ng7
-
-      - name: ngx example 💎
+      - name: ng example 💎
         uses: cypress-io/github-action@v1
         with:
           working-directory: examples
       
-      - name: Upload artifact ngx
+      - name: Upload artifact ng
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
-          name: artifact-ngx
+          name: artifact-ng
           path: |
             **/screenshots/**/*(failed).png
             **/init.diff.png
