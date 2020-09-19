@@ -26,7 +26,7 @@ import { ServiceStubComponent } from './service-stub/service-stub.component';
     HtmlMountComponent,
     OutputSubscribeComponent,
     HighlightDirective,
-    CapitalizePipe,
+    CapitalizePipe
     ImageSnapshotComponent,
     MaterialButtonComponent,
     BootstrapButtonComponent,
