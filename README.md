@@ -81,6 +81,7 @@ Use case | Description
 [Directive](examples/ng9/src/app/directives/highlight) | Test directive with mountHtml
 [Pipe](examples/ng9/src/app/pipes/capitalize) | Test pipe with mountHtml
 [Stub service](examples/ng9/src/app/service-stub) | Stub a service with Observable
+[Web Component](examples/ng9/src/app/use-custom-element) | Test a custom element with shadow dom
 
 ### Internal
 
