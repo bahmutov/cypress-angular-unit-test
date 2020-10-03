@@ -82,7 +82,7 @@ Use case | Description
 
 ### External
 
-- [Tour of Heroes](https://github.com/bahmutov-tour-of-heroes)
+- [Tour of Heroes](https://github.com/bahmutov/ng9-tour-of-heroes)
 
 ## Working
 
