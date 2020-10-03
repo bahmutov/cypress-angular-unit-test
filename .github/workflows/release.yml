@@ -10,6 +10,8 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v1
       - name: Semantic Release 🚀
         uses: cycjimmy/semantic-release-action@v2
         if: github.event.inputs.release == 'true'
