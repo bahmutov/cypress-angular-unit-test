@@ -24,7 +24,7 @@
     "cypress": "5.2.0",
     "typescript": "3.8.3",
     "zone.js": "0.10.3",
-    "semantic-release": "^17.0.7",
+    "semantic-release": "17.1.2",
     "core-js": "3.6.5"
   },
   "peerDependencies": {
