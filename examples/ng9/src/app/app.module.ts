@@ -17,6 +17,7 @@ import { OnPushStratComponent } from './on-push-strat/on-push-strat.component';
 import { OutputSubscribeComponent } from './output-subscribe/output-subscribe.component';
 import { CapitalizePipe } from './pipes/capitalize/capitalize.pipe';
 import { ServiceStubComponent } from './service-stub/service-stub.component';
+import { UseCustomElementComponent } from './use-custom-element/use-custom-element.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ServiceStubComponent } from './service-stub/service-stub.component';
     BootstrapButtonComponent,
     AddStyleComponent,
     InputComponent,
-    ServiceStubComponent
+    ServiceStubComponent,
+    UseCustomElementComponent
   ],
   imports: [
     BrowserModule,

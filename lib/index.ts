@@ -38,7 +38,8 @@ function init<T>(component: Type<T>, moduleDef?: TestModuleMetadata): void {
   TestBed.configureTestingModule({
     declarations,
     imports: moduleDef ? moduleDef.imports : [],
-    providers
+    providers,
+    schemas: moduleDef ? moduleDef.schemas : []
   });
 
   // @ts-ignore
