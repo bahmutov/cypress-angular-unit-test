@@ -12,6 +12,15 @@ jobs:
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v1
+
+      - name: Install dependencies 📦
+        uses: cypress-io/github-action@v1
+        with:
+          runTests: false
+
+      - name: Build 🏗
+        run: npm run build
+
       - name: Semantic Release 🚀
         uses: cycjimmy/semantic-release-action@v2
         if: github.event.inputs.release == 'true'
