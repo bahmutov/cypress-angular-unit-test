@@ -5,5 +5,10 @@ describe('AssetsImageComponent', () => {
   it('should create', () => {
     initEnv(AssetsImageComponent);
     mount(AssetsImageComponent);
+    cy.get('img')
+      .should('be.visible')
+      .and(($img) => {
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
   });
 });
