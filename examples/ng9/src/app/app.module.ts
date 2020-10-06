@@ -18,9 +18,10 @@ import { OutputSubscribeComponent } from './output-subscribe/output-subscribe.co
 import { CapitalizePipe } from './pipes/capitalize/capitalize.pipe';
 import { ServiceStubComponent } from './service-stub/service-stub.component';
 import { UseCustomElementComponent } from './use-custom-element/use-custom-element.component';
+import { AssetsImageComponent } from './assets-image/assets-image.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     OnPushStratComponent,
     NetworkComponent,
@@ -34,8 +35,9 @@ import { UseCustomElementComponent } from './use-custom-element/use-custom-eleme
     AddStyleComponent,
     InputComponent,
     ServiceStubComponent,
-    UseCustomElementComponent
-  ],
+    UseCustomElementComponent,
+      AssetsImageComponent
+   ],
   imports: [
     BrowserModule,
     HttpClientModule,
