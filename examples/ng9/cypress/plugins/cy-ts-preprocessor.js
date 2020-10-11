@@ -25,6 +25,10 @@ const webpackOptions = {
         exclude: /\.async\.(css)$/
       },
       {
+        test: /\.scss$/,
+        loaders: ['to-string-loader', 'css-loader', 'sass-loader'],
+      },
+      {
         test: /\.(html)$/,
         loader: 'html-loader',
         exclude: /\.async\.(css)$/

@@ -77,6 +77,7 @@ Use case | Description
 [HTML mount](examples/ng9/src/app/html-mount) | Mount a component with html, don't forget to call `detectChanges()` after
 [Image Snapshot](examples/ng9/src/app/image-snapshot) | Mount a component and visual asserting
 [Material](examples/ng9/src/app/material-button) | Material integration
+[Prime NG](examples/ng9/src/app/primeng-button) | PrimeNG integration
 [OnPush strategy](examples/ng9/src/app/on-push-strat) | Component with `changeDetection: ChangeDetectionStrategy.OnPush` need call `detectChanges()`
 [Directive](examples/ng9/src/app/directives/highlight) | Test directive with mountHtml
 [Pipe](examples/ng9/src/app/pipes/capitalize) | Test pipe with mountHtml
