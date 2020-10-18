@@ -1,14 +1,8 @@
 const wp = require('@cypress/webpack-preprocessor');
-const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { addImageRedirect } = require('./add-image-redirect');
 
 const webpackOptions = {
   resolve: {
     extensions: ['.ts', '.js'],
-    alias: {
-      assets: path.resolve(__dirname, '/src/assets'),
-    }
   },
   module: {
     rules: [
@@ -45,16 +39,7 @@ const webpackOptions = {
       }
     ]
   },
-  plugins: [
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: './src/assets/*', to: 'dist' },
-      ],
-    }),
-  ]
 }
-
-addImageRedirect(webpackOptions)
 
 const options = {
   webpackOptions

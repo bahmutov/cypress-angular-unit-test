@@ -21,14 +21,14 @@ import { UseCustomElementComponent } from './use-custom-element/use-custom-eleme
 import { AssetsImageComponent } from './assets-image/assets-image.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     OnPushStratComponent,
     NetworkComponent,
     HtmlMountComponent,
     OutputSubscribeComponent,
     HighlightDirective,
-    CapitalizePipe
+    CapitalizePipe,
     ImageSnapshotComponent,
     MaterialButtonComponent,
     BootstrapButtonComponent,
@@ -36,8 +36,8 @@ import { AssetsImageComponent } from './assets-image/assets-image.component';
     InputComponent,
     ServiceStubComponent,
     UseCustomElementComponent,
-      AssetsImageComponent
-   ],
+    AssetsImageComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,

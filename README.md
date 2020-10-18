@@ -82,7 +82,7 @@ Use case | Description
 [Pipe](examples/ng9/src/app/pipes/capitalize) | Test pipe with mountHtml
 [Stub service](examples/ng9/src/app/service-stub) | Stub a service with Observable
 [Web Component](examples/ng9/src/app/use-custom-element) | Test a custom element with shadow dom
-[Assets](examples/ng9/src/app/assets-image) | Copy all Angular `assets` to be accessible by Cypress
+[Assets](examples/ng9/src/app/assets-image) | `assets` folder accessible by Cypress
 
 ### Internal
 

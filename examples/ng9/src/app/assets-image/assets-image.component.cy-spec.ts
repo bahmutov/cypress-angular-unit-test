@@ -5,6 +5,7 @@ describe('AssetsImageComponent', () => {
   it('should create', () => {
     initEnv(AssetsImageComponent);
     mount(AssetsImageComponent);
+    // add "fileServerFolder": "src" in cypress.json
     cy.get('img')
       .should('be.visible')
       .and(($img) => {
