@@ -8,6 +8,6 @@ export class NetworkService {
   }
 
   getUsers() {
-    return this.httpClient.get('https://jsonplaceholder.cypress.io/users?_limit=3');
+    return this.httpClient.get<any[]>('https://jsonplaceholder.cypress.io/users?_limit=3');
   }
 }

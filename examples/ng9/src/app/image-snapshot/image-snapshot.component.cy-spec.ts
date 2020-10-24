@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+/// <reference types="cypress-image-snapshot" />
 import { mount, initEnv } from 'cypress-angular-unit-test';
 import { ImageSnapshotComponent } from './image-snapshot.component';
 
