@@ -7,7 +7,7 @@ describe('HighlightDirective', () => {
     initEnvHtml(HighlightDirective);
   });
 
-  it.skip('should create an instance', () => {
+  it('should create an instance', () => {
     const fixture = mountHtml('<p appHighlight>Highlight me!</p>');
     fixture.detectChanges();
     cy.get('p')

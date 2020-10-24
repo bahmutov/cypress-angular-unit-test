@@ -17,6 +17,9 @@ jobs:
       - name: Build 🏗
         run: npm run build
 
+      - name: Pack 🏗
+        run: npm pack
+
       - name: ng7 example 💎
         uses: cypress-io/github-action@v1
         with:
@@ -26,6 +29,10 @@ jobs:
         uses: cypress-io/github-action@v1
         with:
           working-directory: examples/ng9
+          build: |
+            npm install -D ../../cypress-angular-unit-test-0.0.0-development.tgz
+            npm install
+            mv ../../node_modules ../../no_modules
       
       - name: Upload artifact ng9
         if: ${{ always() }}
