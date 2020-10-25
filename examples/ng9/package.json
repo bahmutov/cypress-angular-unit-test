@@ -10,6 +10,7 @@
     "e2e": "ng e2e",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
+    "build:ci": "npm install -D ../../cypress-angular-unit-test-0.0.0-development.tgz && npm install && mv ../../node_modules ../../no_modules",
     "docker:run": "docker run -it -v ${PWD}:/e2e -w /e2e -e CYPRESS_updateSnapshots cypress/included:5.1.0"
   },
   "private": true,

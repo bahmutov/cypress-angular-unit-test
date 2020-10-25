@@ -10,22 +10,26 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install dependencies 📦
-        uses: cypress-io/github-action@v1
+        uses: cypress-io/github-action@v2
         with:
           runTests: false
 
       - name: Build 🏗
         run: npm run build
 
+      - name: Pack 🏗
+        run: npm pack
+
       - name: ng7 example 💎
-        uses: cypress-io/github-action@v1
+        uses: cypress-io/github-action@v2
         with:
           working-directory: examples/ng7
 
       - name: ng9 example 💎
-        uses: cypress-io/github-action@v1
+        uses: cypress-io/github-action@v2
         with:
           working-directory: examples/ng9
+          build: npm run build:ci
       
       - name: Upload artifact ng9
         if: ${{ always() }}
