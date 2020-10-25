@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install dependencies 📦
-        uses: cypress-io/github-action@v1
+        uses: cypress-io/github-action@v2
         with:
           runTests: false
 
@@ -21,15 +21,15 @@ jobs:
         run: npm pack
 
       - name: ng7 example 💎
-        uses: cypress-io/github-action@v1
+        uses: cypress-io/github-action@v2
         with:
           working-directory: examples/ng7
 
       - name: ng9 example 💎
-        uses: cypress-io/github-action@v1
+        uses: cypress-io/github-action@v2
         with:
           working-directory: examples/ng9
-          build: npm install -D ../../cypress-angular-unit-test-0.0.0-development.tgz && npm install && mv ../../node_modules ../../no_modules
+          build: npm run build:ci
       
       - name: Upload artifact ng9
         if: ${{ always() }}
