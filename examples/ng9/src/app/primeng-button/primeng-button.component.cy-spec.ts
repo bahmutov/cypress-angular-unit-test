@@ -14,7 +14,7 @@ describe('PrimengButtonComponent', () => {
     initEnv(PrimengButtonComponent, { imports: [ButtonModule, BrowserAnimationsModule] });
   });
 
-  it.skip('should create', () => {
+  it('should create', () => {
     const fixture = mount(PrimengButtonComponent);
     fixture.detectChanges();
     cy.get('#directive')

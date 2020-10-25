@@ -8,7 +8,7 @@ describe('Network', () => {
     initEnv(NetworkComponent, { providers: [NetworkService] });
   });
 
-  it.skip('fetches 3 users from remote API', () => {
+  it('fetches 3 users from remote API', () => {
     mount(NetworkComponent);
     cy.get('li', { timeout: 20000 }).should('have.length', 3)
   });
