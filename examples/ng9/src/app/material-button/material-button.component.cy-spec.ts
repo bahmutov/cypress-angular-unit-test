@@ -10,7 +10,7 @@ describe('MaterialButtonComponent', () => {
     initEnv(MaterialButtonComponent, { imports: [MatButtonModule, BrowserAnimationsModule] });
   });
 
-  it.skip('should create', () => {
+  it('should create', () => {
     const fixture = mount(MaterialButtonComponent);
     fixture.detectChanges();
   });

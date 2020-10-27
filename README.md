@@ -1,4 +1,4 @@
-## cypress-angular-unit-test BETA [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-5.3.0-brightgreen) [![ci status][ci image]][ci url]
+## cypress-angular-unit-test BETA [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-5.4.0-brightgreen) [![ci status][ci image]][ci url]
 
 ## Installation
 
@@ -77,6 +77,7 @@ Use case | Description
 [HTML mount](examples/ng9/src/app/html-mount) | Mount a component with html, don't forget to call `detectChanges()` after
 [Image Snapshot](examples/ng9/src/app/image-snapshot) | Mount a component and visual asserting
 [Material](examples/ng9/src/app/material-button) | Material integration
+[Prime NG](examples/ng9/src/app/primeng-button) | PrimeNG integration
 [OnPush strategy](examples/ng9/src/app/on-push-strat) | Component with `changeDetection: ChangeDetectionStrategy.OnPush` need call `detectChanges()`
 [Directive](examples/ng9/src/app/directives/highlight) | Test directive with mountHtml
 [Pipe](examples/ng9/src/app/pipes/capitalize) | Test pipe with mountHtml
