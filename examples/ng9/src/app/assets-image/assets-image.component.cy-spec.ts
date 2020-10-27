@@ -6,7 +6,12 @@ describe('AssetsImageComponent', () => {
     initEnv(AssetsImageComponent);
     mount(AssetsImageComponent);
     // add "fileServerFolder": "src" in cypress.json
-    cy.get('img')
+    cy.get('img#noSlash')
+      .should('be.visible')
+      .and(($img) => {
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
+    cy.get('img#slash')
       .should('be.visible')
       .and(($img) => {
         expect($img[0].naturalWidth).to.be.greaterThan(0);
