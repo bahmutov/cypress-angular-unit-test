@@ -22,6 +22,7 @@ beforeEach(() => {
   const html = `
     <head>
       <meta charset="UTF-8">
+      <base href="/">
     </head>
     <body>
       <root0 id="root"></root0>

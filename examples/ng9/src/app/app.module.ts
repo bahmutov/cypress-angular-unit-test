@@ -20,6 +20,7 @@ import { CapitalizePipe } from './pipes/capitalize/capitalize.pipe';
 import { PrimengButtonComponent } from './primeng-button/primeng-button.component';
 import { ServiceStubComponent } from './service-stub/service-stub.component';
 import { UseCustomElementComponent } from './use-custom-element/use-custom-element.component';
+import { AssetsImageComponent } from './assets-image/assets-image.component';
 
 @NgModule({
   declarations: [	
@@ -29,7 +30,7 @@ import { UseCustomElementComponent } from './use-custom-element/use-custom-eleme
     HtmlMountComponent,
     OutputSubscribeComponent,
     HighlightDirective,
-    CapitalizePipe
+    CapitalizePipe,
     ImageSnapshotComponent,
     MaterialButtonComponent,
     BootstrapButtonComponent,
@@ -37,7 +38,8 @@ import { UseCustomElementComponent } from './use-custom-element/use-custom-eleme
     InputComponent,
     ServiceStubComponent,
     UseCustomElementComponent,
-      PrimengButtonComponent
+    AssetsImageComponent,
+    PrimengButtonComponent
    ],
   imports: [
     BrowserModule,

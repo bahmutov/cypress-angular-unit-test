@@ -83,6 +83,7 @@ Use case | Description
 [Pipe](examples/ng9/src/app/pipes/capitalize) | Test pipe with mountHtml
 [Stub service](examples/ng9/src/app/service-stub) | Stub a service with Observable
 [Web Component](examples/ng9/src/app/use-custom-element) | Test a custom element with shadow dom
+[Assets](examples/ng9/src/app/assets-image) | `assets` folder accessible by Cypress
 
 ### Internal
 
@@ -104,6 +105,18 @@ I have successfully used this mounting approach to test components in other fram
 * [cypress-angular-unit-test](https://github.com/bahmutov/cypress-angular-unit-test)
 * [cypress-hyperapp-unit-test](https://github.com/bahmutov/cypress-hyperapp-unit-test)
 * [cypress-angularjs-unit-test](https://github.com/bahmutov/cypress-angularjs-unit-test)
+
+## Debugging
+
+You can turn on debugging log by setting environment variable :
+
+```
+// Unix
+export DEBUG="cypress-angular-unit-test,cypress:webpack:stats"
+
+// PowerShell
+$env:DEBUG="cypress-angular-unit-test,cypress:webpack:stats"
+```
 
 ## Development
 

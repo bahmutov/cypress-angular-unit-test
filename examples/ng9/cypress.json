@@ -4,5 +4,6 @@
   "componentFolder": "src",
   "testFiles": "**/*cy-spec.*",
   "fixturesFolder": false,
-  "includeShadowDom": true
+  "includeShadowDom": true,
+  "fileServerFolder": "src"
 }

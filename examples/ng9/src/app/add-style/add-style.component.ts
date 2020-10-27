@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-add-style',
   templateUrl: './add-style.component.html',
-  styleUrls: ['./add-style.component.css']
+  styleUrls: ['./add-style.component.scss']
 })
 export class AddStyleComponent implements OnInit {
 

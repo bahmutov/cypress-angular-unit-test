@@ -60,6 +60,7 @@ describe('AppComponent', () => {
       <root0></root0>
     </body>
   `;
+    // @ts-ignore
     const document = cy.state('document');
     document.write(html);
     document.close();
