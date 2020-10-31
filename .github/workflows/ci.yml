@@ -34,6 +34,7 @@ jobs:
         with:
           working-directory: examples/ng9
           build: npm run build:ci
+          record: true
           parallel: true
           group: 'Actions example'
       
