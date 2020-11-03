@@ -2,6 +2,7 @@ const wp = require('@cypress/webpack-preprocessor');
 const helpers = require('./helpers');
 const webpack = require('webpack');
 const path = require('path');
+const AngularCompilerPlugin = require('@ngtools/webpack');
 
 const webpackOptions = {
   mode: 'development',
@@ -23,15 +24,7 @@ const webpackOptions = {
       {
         test: /\.ts$/,
         // loaders: ['ts-loader', 'angular2-template-loader'],
-        use: [{
-          loader: 'ts-loader',
-          options: {
-            transpileOnly: true
-          }
-        }, {
-          loader: 'angular2-template-loader'
-        }],
-        exclude: [/node_modules/],
+        loader: '@ngtools/webpack',
       },
       {
         // Mark files inside `@angular/core` as using SystemJS style dynamic imports.
@@ -46,11 +39,6 @@ const webpackOptions = {
           'css-loader', 
           'sass-loader'
         ],
-        exclude: [helpers.root('src/index.html')]
-      },
-      {
-        test: /\.html$/,
-        loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
       },
       {
@@ -77,7 +65,12 @@ const webpackOptions = {
     }),
     new webpack.ContextReplacementPlugin(
       /\@angular(\\|\/)core(\\|\/)f?esm5/, path.join(__dirname, './src')
-    )
+    ),
+    new AngularCompilerPlugin.AngularCompilerPlugin({
+      tsConfigPath: './tsconfig.spec.json',
+      directTemplateLoading: true,
+      skipCodeGeneration: true
+    })
   ],
   performance: {
     hints: false

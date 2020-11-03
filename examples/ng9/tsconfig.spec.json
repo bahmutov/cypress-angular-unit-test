@@ -1,19 +1,21 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/spec",
+    "skipLibCheck": true,
     "types": [
-      "jasmine",
-      "node"
+      "node",
+      "cypress"
     ]
   },
   "files": [
-    "src/test.ts",
     "src/polyfills.ts"
   ],
   "include": [
-    "src/**/*.spec.ts",
     "src/**/*.cy-spec.ts",
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "node_modules/cypress",
+  ],
+  "exclude": [
+    "src/**/*.spec.ts",
   ]
 }

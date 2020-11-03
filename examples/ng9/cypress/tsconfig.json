@@ -1,10 +1,17 @@
 {
   "include": [
-    "integration/*.ts"
+    "integration/*.ts",
+    "../**/*cy-spec.ts"
   ],
   "compilerOptions": {
+    "baseUrl": "../node_modules",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "target": "es2015",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
   }
 }
