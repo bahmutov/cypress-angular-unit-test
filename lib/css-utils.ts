@@ -34,7 +34,7 @@ function insertSingleCssFile(
     el: HTMLElement,
     log?: boolean,
 ) {
-    cy.readFile(cssFilename, { log }).then(css => {
+    cy.readFile(cssFilename, { log }).then((css: string) => {
         const style = document.createElement('style')
         style.appendChild(document.createTextNode(css))
         document.body.insertBefore(style, el)

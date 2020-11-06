@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
-require('zone.js/dist/zone');
+import 'zone.js/dist/zone';
+import { getWorkspaceRaw } from '@angular/cli/utilities/config';
+import * as fs from 'fs';
 
 // @ts-ignore
 const isComponentSpec = () => Cypress.spec.specType === 'component'
@@ -18,9 +20,18 @@ Cypress.Commands.overwrite('visit', (visit, ...args) => {
   }
 })
 
+const workspace = getWorkspaceRaw()[0];
+if (!workspace) {
+  throw new Error('No workspace');
+}
+const obj = JSON.parse(workspace.text);
+const styles = obj.projects['angular-project']['architect']['build']['options']['styles'];
+const st = fs.readFileSync(styles[1], 'utf8');
+
 beforeEach(() => {
   const html = `
     <head>
+      <style>${st}</style>
       <meta charset="UTF-8">
       <base href="/">
     </head>
@@ -28,6 +39,7 @@ beforeEach(() => {
       <root0 id="root"></root0>
     </body>
   `;
+  // @ts-ignore
   const document = cy.state('document');
   document.write(html);
   document.close();

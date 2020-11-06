@@ -1,15 +1,21 @@
-const wp = require('@cypress/webpack-preprocessor');
+import * as wp from '@cypress/webpack-preprocessor';
 const helpers = require('./helpers');
-const webpack = require('webpack');
+import { Configuration, ContextReplacementPlugin, DefinePlugin } from 'webpack';
 const path = require('path');
 const AngularCompilerPlugin = require('@ngtools/webpack');
+import { getWorkspaceRaw } from '@angular/cli/utilities/config';
+import * as fs from 'fs';
 
-const webpackOptions = {
+const obj = JSON.parse(getWorkspaceRaw('local')[0].text);
+const styles = obj.projects['angular-project']['architect']['build']['options']['styles'];
+console.log(fs.readFileSync(styles[1], 'utf8'));
+
+const webpackOptions: Configuration = {
   mode: 'development',
   devtool: 'inline-source-map',
   resolve: {
     extensions: ['.ts', '.js'],
-    modules: [helpers.root('src'), 'node_modules']
+    modules: ['./', helpers.root('src'), 'node_modules']
   },
   module: {
     rules: [
@@ -35,8 +41,8 @@ const webpackOptions = {
       {
         test: /(\.css|\.scss|\.sass)$/,
         use: [
-          'to-string-loader', 
-          'css-loader', 
+          'to-string-loader',
+          'css-loader',
           'sass-loader'
         ],
         exclude: [helpers.root('src/index.html')]
@@ -51,19 +57,37 @@ const webpackOptions = {
         include: helpers.root('src'),
         exclude: [/\.(e2e|spec)\.ts$/, /node_modules/]
       },
-      { test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=assets/images/[name].[ext]' },
-      { test: /\.(mp4|webm|ogg)$/i, loader: 'file-loader?name=assets/videos/[name].[ext]' },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?limit=10000&mimetype=image/svg+xml&name=assets/svgs/[name].[ext]' },
-      { test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader?prefix=font/&limit=5000&name=assets/fonts/[name].[ext]' },
-      { test: /\.(woff|woff2)$/, loader: 'file-loader?prefix=font/&limit=5000&name=assets/fonts/[name].[ext]' },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?limit=10000&mimetype=application/octet-stream&name=assets/fonts/[name].[ext]' }
+      {
+        test: /\.(jpe?g|png|gif)$/i,
+        loader: 'file-loader?name=assets/images/[name].[ext]'
+      },
+      {
+        test: /\.(mp4|webm|ogg)$/i,
+        loader: 'file-loader?name=assets/videos/[name].[ext]'
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader?limit=10000&mimetype=image/svg+xml&name=assets/svgs/[name].[ext]'
+      },
+      {
+        test: /\.eot(\?v=\d+.\d+.\d+)?$/,
+        loader: 'file-loader?prefix=font/&limit=5000&name=assets/fonts/[name].[ext]'
+      },
+      {
+        test: /\.(woff|woff2)$/,
+        loader: 'file-loader?prefix=font/&limit=5000&name=assets/fonts/[name].[ext]'
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader?limit=10000&mimetype=application/octet-stream&name=assets/fonts/[name].[ext]'
+      }
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
+    new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'test')
     }),
-    new webpack.ContextReplacementPlugin(
+    new ContextReplacementPlugin(
       /\@angular(\\|\/)core(\\|\/)f?esm5/, path.join(__dirname, './src')
     ),
     new AngularCompilerPlugin.AngularCompilerPlugin({
@@ -84,10 +108,8 @@ const webpackOptions = {
     setImmediate: false,
     fs: 'empty'
   }
-}
+};
 
-const options = {
+module.exports = wp({
   webpackOptions
-}
-
-module.exports = wp(options)
+});
