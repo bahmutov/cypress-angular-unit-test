@@ -40,10 +40,14 @@ const webpackOptions = {
         parser: { system: true },
       },
       {
-        test: /(\.css|\.scss|\.sass)$/,
+        test: /\.css$/,
+        loader: 'raw-loader'
+      },
+      {
+        test: /(\.scss|\.sass)$/,
         use: [
-          'to-string-loader', 
-          'css-loader', 
+          'to-string-loader',
+          'css-loader',
           'sass-loader'
         ],
         exclude: [helpers.root('src/index.html')]
