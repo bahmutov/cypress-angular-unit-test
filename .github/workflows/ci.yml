@@ -1,6 +1,5 @@
 name: ci
-on: 
-  [push, pull_request]
+on: [push, pull_request]
 jobs:
   build:
     name: Tests
@@ -30,7 +29,7 @@ jobs:
         with:
           working-directory: examples/ng9
           build: npm run build:ci
-      
+
       - name: Upload artifact ng9
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
@@ -39,3 +38,4 @@ jobs:
           path: |
             **/screenshots/**/*(failed).png
             **/init.diff.png
+            **/videos/**
