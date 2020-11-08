@@ -1,7 +1,7 @@
 const wp = require('@cypress/webpack-preprocessor');
 import root from './helpers';
-import webpack from 'webpack';
-import path from 'path';
+import * as webpack from 'webpack';
+import * as path from 'path';
 
 const webpackOptions = {
   mode: 'development',
