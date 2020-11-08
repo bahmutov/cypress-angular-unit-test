@@ -6,5 +6,8 @@
   "major": {
     "automerge": false
   },
-  "masterIssue": true
+  "masterIssue": true,
+  "ignorePaths": [
+    "examples/ng7"
+  ]
 }
