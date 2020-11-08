@@ -27,8 +27,8 @@
     "@angular/router": "10.1.2",
     "core-js": "3.6.5",
     "primeng": "10.0.3",
-    "rxjs": "~6.4.0",
-    "tslib": "^1.10.0",
+    "rxjs": "6.4.0",
+    "tslib": "1.13.0",
     "zone.js": "0.10.3"
   },
   "devDependencies": {
@@ -36,12 +36,12 @@
     "@angular/cli": "10.1.3",
     "@angular/compiler-cli": "10.1.3",
     "@angular/language-service": "10.1.3",
-    "@cypress/webpack-preprocessor": "^5.4.1",
-    "@types/node": "~8.9.4",
+    "@cypress/webpack-preprocessor": "5.4.1",
+    "@types/node": "8.9.5",
     "@types/cypress-image-snapshot": "3.1.2",
     "angular-router-loader": "0.8.5",
     "angular2-template-loader": "0.6.2",
-    "codelyzer": "^5.0.0",
+    "codelyzer": "5.2.2",
     "cypress": "5.3.0",
     "cypress-angular-unit-test": "file:../..",
     "cypress-image-snapshot": "3.1.1",
@@ -49,8 +49,8 @@
     "raw-loader": "1.0.0",
     "to-string-loader": "1.1.6",
     "ts-loader": "7.0.4",
-    "ts-node": "~7.0.0",
-    "tslint": "~5.15.0",
+    "ts-node": "7.0.1",
+    "tslint": "5.15.0",
     "typescript": "3.6.4"
   }
 }
