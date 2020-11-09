@@ -19,12 +19,7 @@ jobs:
       - name: Pack 🏗
         run: npm pack
 
-      - name: ng7 example 💎
-        uses: cypress-io/github-action@v2
-        with:
-          working-directory: examples/ng7
-
-      - name: ng9 example 💎
+      - name: Test 🧪
         uses: cypress-io/github-action@v2
         with:
           working-directory: examples/ng9
