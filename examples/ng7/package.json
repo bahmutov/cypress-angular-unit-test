@@ -9,8 +9,7 @@
     "build": "ng build --prod",
     "lint": "ng lint",
     "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "build:ci": "npm install -D ../../cypress-angular-unit-test-0.0.0-development.tgz && npm install && mv ../../node_modules ../../no_modules"
+    "cy:run": "cypress run"
   },
   "private": true,
   "files": [],
