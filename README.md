@@ -118,9 +118,14 @@ $env:DEBUG="cypress-angular-unit-test,cypress:webpack:stats"
 
 This project only transpiles the library, to see it in action:
 
-1. switch to the example project like `cd examples/ng9`
-2. install it with `npm i`
-3. open Cypress with `npx cypress open`
+- Install dependencies `npm i`
+- Compile the library `npm run build`
+- Pack it `npm pack`, you should have `cypress-angular-unit-test-0.0.0-development.tgz` file
+- Switch to the example project `cd examples/ng9`
+- Install `cypress-angular-unit-test` with `npm install -D ../../cypress-angular-unit-test-0.0.0-development.tgz`
+- Install dependencies `npm i`
+- Remove `node_modules` folder to avoid `Angular` conflicts : `mv ../../node_modules ../../no_modules`
+- Open Cypress with `npx cypress open`
 
 Pick any component test spec file to run
 
