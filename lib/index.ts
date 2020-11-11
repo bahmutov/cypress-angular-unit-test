@@ -12,7 +12,7 @@ export function setConfig(c: CypressAngularConfig): void {
 }
 
 function init<T>(component: Type<T>, moduleDef?: TestModuleMetadata): void {
-  Cypress.log({ displayName: 'Unit Test', message: 'Init Environment' });
+  Cypress.log({ displayName: 'Unit Test', message: ['Init Environment'] });
   checkIsComponentSpec();
 
   TestBed.resetTestEnvironment();
@@ -61,7 +61,7 @@ export function mount<T>(component: Type<T>, inputs?: object): ComponentFixture<
   checkIsComponentSpec();
 
   // TODO improve logging using a full log instance
-  Cypress.log({ displayName: 'Unit Test', message: `Mounting **${component.name}**` });
+  Cypress.log({ displayName: 'Unit Test', message: [`Mounting **${component.name}**`] });
   const fixture = TestBed.createComponent(component);
   let componentInstance = fixture.componentInstance;
   componentInstance = Object.assign(componentInstance, inputs);
@@ -88,7 +88,7 @@ export function initEnvHtml<T>(component?: Type<T>, moduleDef?: TestModuleMetada
 export function mountHtml(htmlTemplate: string): ComponentFixture<ProxyComponent> {
   checkIsComponentSpec();
 
-  Cypress.log({ displayName: 'Unit Test', message: `Mounting **${htmlTemplate}**` });
+  Cypress.log({ displayName: 'Unit Test', message: [`Mounting **${htmlTemplate}**`] });
   TestBed.overrideComponent(ProxyComponent, { set: { template: htmlTemplate } });
   TestBed.compileComponents();
   const fixture = TestBed.createComponent(ProxyComponent);

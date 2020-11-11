@@ -9,12 +9,14 @@ describe('AssetsImageComponent', () => {
     cy.get('img#noSlash')
       .should('be.visible')
       .and(($img) => {
-        expect($img[0].naturalWidth).to.be.greaterThan(0);
+        const img = $img[0] as HTMLImageElement;
+        expect(img.naturalWidth).to.be.greaterThan(0);
       });
     cy.get('img#slash')
       .should('be.visible')
       .and(($img) => {
-        expect($img[0].naturalWidth).to.be.greaterThan(0);
+        const img = $img[0] as HTMLImageElement;
+        expect(img.naturalWidth).to.be.greaterThan(0);
       });
   });
 });

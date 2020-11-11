@@ -46,3 +46,8 @@ cypress/videos
 **/videos
 **/screenshots
 node_modules
+.nyc_output
+coverage
+debug.log
+*.tgz
+All Component Specs
