@@ -16,7 +16,6 @@ const webpackOptions = {
         enforce: 'pre',
         test: /\.js$/,
         loader: 'source-map-loader',
-        exclude: [root('node_modules/@angular')],
       },
       {
         test: /\.ts$/,
@@ -33,6 +32,18 @@ const webpackOptions = {
           },
         ],
         exclude: [/node_modules/],
+      },
+      {
+        test: /\.(js|ts)$/,
+        loader: 'istanbul-instrumenter-loader',
+        options: { esModules: true },
+        enforce: 'post',
+        include: path.join(__dirname, '../..', 'src'),
+        exclude: [
+          /\.(e2e|spec)\.ts$/,
+          /node_modules/,
+          /(ngfactory|ngstyle)\.js/
+        ]
       },
       {
         // Mark files inside `@angular/core` as using SystemJS style dynamic imports.

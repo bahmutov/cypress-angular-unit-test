@@ -90,6 +90,99 @@ const componentService = getCypressTestBed().inject(SomeService);
 | [Web Component](examples/ng9/src/app/use-custom-element)          | Test a custom element with shadow dom                                                        |
 | [Assets](examples/ng9/src/app/assets-image)                       | `assets` folder accessible by Cypress                                                        |
 
+## Code coverage
+
+### Integration test
+
+- Install ngx-build-plus to extends the Angular CLI's build process and instrument the code
+
+`npm i -D ngx-build-plus`
+
+- Add webpack coverage config file coverage.webpack.js to cypress folder
+
+```javascript
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|ts)$/,
+        loader: 'istanbul-instrumenter-loader',
+        options: { esModules: true },
+        enforce: 'post',
+        include: require('path').join(__dirname, '..', 'src'),
+        exclude: [
+          /\.(e2e|spec)\.ts$/,
+          /node_modules/,
+          /(ngfactory|ngstyle)\.js/
+        ]
+      }
+    ]
+  }
+};
+```
+
+- Update `angular.json` to use ngx-build with extra config
+
+```json
+"serve": {
+  "builder": "ngx-build-plus:dev-server",
+  "options": {
+    "browserTarget": "cypress-angular-coverage-example:build",
+    "extraWebpackConfig": "./cypress/coverage.webpack.js"
+  },
+}
+```
+
+- Instrument JS files with istanbul for code coverage reporting
+
+`npm i -D istanbul-instrumenter-loader`
+
+- Add cypress code coverage plugin
+  
+`npm install -D @cypress/code-coverage`
+
+- Then add the code below to your supportFile and pluginsFile
+
+```javascript
+// cypress/support/index.js
+import '@cypress/code-coverage/support'
+// cypress/plugins/index.js
+module.exports = (on, config) => {
+  require('@cypress/code-coverage/task')(on, config);
+  return config;
+};
+```
+source : https://github.com/skylock/cypress-angular-coverage-example
+
+### Unit test
+
+- Instrument JS files with istanbul for code coverage reporting
+
+`npm i -D istanbul-instrumenter-loader`
+
+- In your `cypress/plugins/cy-ts-preprocessor.ts` add this rule
+
+```javascript
+rules: [
+  {
+    test: /\.(js|ts)$/,
+    loader: 'istanbul-instrumenter-loader',
+    options: { esModules: true },
+    enforce: 'post',
+    include: path.join(__dirname, '../..', 'src'),
+    exclude: [
+      /\.(e2e|spec)\.ts$/,
+      /node_modules/,
+      /(ngfactory|ngstyle)\.js/
+    ]
+  }
+]
+```
+
+### Report
+
+You can find the HTML report at `coverage/lcov-report/index.html`
+
 ## Working
 
 I have successfully used this mounting approach to test components in other frameworks.
