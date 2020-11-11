@@ -1,4 +1,4 @@
-## cypress-angular-unit-test BETA [![npm version](https://badge.fury.io/js/cypress-angular-unit-test.svg)](https://badge.fury.io/js/cypress-angular-unit-test) [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-5.6.0-brightgreen) [![ci status][ci image]][ci url]
+## cypress-angular-unit-test [![npm version](https://badge.fury.io/js/cypress-angular-unit-test.svg)](https://badge.fury.io/js/cypress-angular-unit-test) [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-5.6.0-brightgreen) [![ci status][ci image]][ci url]
 
 ## Installation
 
@@ -29,11 +29,15 @@ Enable experimental component testing mode in `cypress.json` and point at the sp
 
 Configure `cypress/plugins/index.js` to transpile Angular code.
 
-```
-TODO still under development
+```javascript
+import * as cypressTypeScriptPreprocessor from './cy-ts-preprocessor';
+module.exports = (on, config) => {
+  on('file:preprocessor', cypressTypeScriptPreprocessor);
+  return config;
+};
 ```
 
-See blocker issue for Angular9 [here](https://github.com/bahmutov/ng9-tour-of-heroes/issues/1)
+The file `cy-ts-preprocessor` is [here](examples/ng9/cypress/plugins/cy-ts-preprocessor.ts)
 
 ## Use
 
