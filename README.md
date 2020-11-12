@@ -3,7 +3,7 @@
 ## Installation
 
 ```shell
-npm install -D cypress cypress-angular-unit-test
+npm install -D cypress cypress-angular-unit-test @cypress/webpack-preprocessor
 ```
 
 Add to your support file
