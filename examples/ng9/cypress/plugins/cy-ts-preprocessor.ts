@@ -57,7 +57,7 @@ const webpackOptions = {
       },
       {
         test: /(\.scss|\.sass)$/,
-        use: ['to-string-loader', 'css-loader', 'sass-loader'],
+        use: ['raw-loader', 'sass-loader'],
       },
       {
         test: /\.html$/,
