@@ -21,9 +21,10 @@ import { PrimengButtonComponent } from './primeng-button/primeng-button.componen
 import { ServiceStubComponent } from './service-stub/service-stub.component';
 import { UseCustomElementComponent } from './use-custom-element/use-custom-element.component';
 import { AssetsImageComponent } from './assets-image/assets-image.component';
+import { ScssStyleComponent } from './scss-style/scss-style.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     OnPushStratComponent,
     NetworkComponent,
@@ -39,8 +40,9 @@ import { AssetsImageComponent } from './assets-image/assets-image.component';
     ServiceStubComponent,
     UseCustomElementComponent,
     AssetsImageComponent,
-    PrimengButtonComponent
-   ],
+    PrimengButtonComponent,
+    ScssStyleComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
