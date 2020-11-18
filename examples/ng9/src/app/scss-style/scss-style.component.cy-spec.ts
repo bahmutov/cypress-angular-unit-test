@@ -1,4 +1,4 @@
-import { initEnv, mount } from 'cypress-angular-unit-test/dist';
+import { initEnv, mount } from 'cypress-angular-unit-test';
 import { ScssStyleComponent } from './scss-style.component';
 
 describe('ScssStyleComponent', () => {
