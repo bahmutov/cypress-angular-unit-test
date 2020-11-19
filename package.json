@@ -35,7 +35,7 @@
     "zone.js": "0.11.3",
     "prettier": "2.1.2",
     "pretty-quick": "3.1.0",
-    "semantic-release": "17.2.3",
+    "semantic-release": "17.2.4",
     "core-js": "3.7.0"
   },
   "peerDependencies": {
