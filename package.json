@@ -21,7 +21,7 @@
   "types": "dist",
   "homepage": "https://github.com/bahmutov/cypress-angular-unit-test#readme",
   "dependencies": {
-    "debug": "4.2.0"
+    "debug": "4.3.0"
   },
   "devDependencies": {
     "@angular/common": "11.0.1",
