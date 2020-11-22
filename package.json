@@ -10,7 +10,8 @@
     "cy:run": "cypress run",
     "ng": "ng",
     "app-start": "ng serve",
-    "app-build": "ng build"
+    "app-build": "ng build",
+    "docker:run": "docker run -it -v ${PWD}:/e2e -w /e2e -e CYPRESS_updateSnapshots cypress/included:5.1.0"
   },
   "private": false,
   "files": [
