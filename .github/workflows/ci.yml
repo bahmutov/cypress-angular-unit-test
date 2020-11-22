@@ -16,20 +16,14 @@ jobs:
       - name: Build 🏗
         run: npm run build
 
-      - name: Pack 🏗
-        run: npm pack
-
       - name: Test 🧪
         uses: cypress-io/github-action@v2
-        with:
-          working-directory: examples/ng9
-          build: npm run build:ci
 
-      - name: Upload artifact ng9
+      - name: Upload artifact
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
-          name: artifact-ng9
+          name: artifact
           path: |
             **/screenshots/**/*(failed).png
             **/init.diff.png

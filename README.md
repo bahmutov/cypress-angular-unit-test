@@ -37,7 +37,7 @@ module.exports = (on, config) => {
 };
 ```
 
-The file `cy-ts-preprocessor` is [here](examples/ng9/cypress/plugins/cy-ts-preprocessor.ts)
+The file `cy-ts-preprocessor` is [here](cypress/plugins/cy-ts-preprocessor.ts)
 
 ## Use
 
@@ -72,23 +72,23 @@ const componentService = getCypressTestBed().inject(SomeService);
 
 ## Examples
 
-| Use case                                                          | Description                                                                                  |
-| ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| [Input](examples/ng9/src/app/input)                               | Test inject `@Input()` value                                                                 |
-| [Output](examples/ng9/src/app/output-subscribe)                   | Test catching `@Output()`                                                                    |
-| [Bootstrap](examples/ng9/src/app/bootstrap-button)                | Bootstrap integration with style : `setConfig({ stylesheet: 'https://...});`                 |
-| [Add style](examples/ng9/src/app/add-style)                       | Add custom style for testing : `setConfig({ style: 'p {background-color: blue;}' });`        |
-| [HTML mount](examples/ng9/src/app/html-mount)                     | Mount a component with html, don't forget to call `detectChanges()` after                    |
-| [Image Snapshot](examples/ng9/src/app/image-snapshot)             | Mount a component and visual asserting                                                       |
-| [Material](examples/ng9/src/app/material-button)                  | Material integration                                                                         |
-| [Prime NG](examples/ng9/src/app/primeng-button)                   | PrimeNG integration                                                                          |
-| [OnPush strategy](examples/ng9/src/app/on-push-strat)             | Component with `changeDetection: ChangeDetectionStrategy.OnPush` need call `detectChanges()` |
-| [Directive](examples/ng9/src/app/directives/highlight)            | Test directive with mountHtml                                                                |
-| [Pipe](examples/ng9/src/app/pipes/capitalize)                     | Test pipe with mountHtml                                                                     |
-| [Stub service](examples/ng9/src/app/service-stub)                 | Stub a service with Observable                                                               |
-| [Only service](examples/ng9/src/app/my-values.service.cy-spec.ts) | Test a service without a component                                                           |
-| [Web Component](examples/ng9/src/app/use-custom-element)          | Test a custom element with shadow dom                                                        |
-| [Assets](examples/ng9/src/app/assets-image)                       | `assets` folder accessible by Cypress                                                        |
+| Use case                                             | Description                                                                                  |
+| ---------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| [Input](src/app/input)                               | Test inject `@Input()` value                                                                 |
+| [Output](src/app/output-subscribe)                   | Test catching `@Output()`                                                                    |
+| [Bootstrap](src/app/bootstrap-button)                | Bootstrap integration with style : `setConfig({ stylesheet: 'https://...});`                 |
+| [Add style](src/app/add-style)                       | Add custom style for testing : `setConfig({ style: 'p {background-color: blue;}' });`        |
+| [HTML mount](src/app/html-mount)                     | Mount a component with html, don't forget to call `detectChanges()` after                    |
+| [Image Snapshot](src/app/image-snapshot)             | Mount a component and visual asserting                                                       |
+| [Material](src/app/material-button)                  | Material integration                                                                         |
+| [Prime NG](src/app/primeng-button)                   | PrimeNG integration                                                                          |
+| [OnPush strategy](src/app/on-push-strat)             | Component with `changeDetection: ChangeDetectionStrategy.OnPush` need call `detectChanges()` |
+| [Directive](src/app/directives/highlight)            | Test directive with mountHtml                                                                |
+| [Pipe](src/app/pipes/capitalize)                     | Test pipe with mountHtml                                                                     |
+| [Stub service](src/app/service-stub)                 | Stub a service with Observable                                                               |
+| [Only service](src/app/my-values.service.cy-spec.ts) | Test a service without a component                                                           |
+| [Web Component](src/app/use-custom-element)          | Test a custom element with shadow dom                                                        |
+| [Assets](src/app/assets-image)                       | `assets` folder accessible by Cypress                                                        |
 
 ## Code coverage
 
@@ -113,11 +113,11 @@ module.exports = {
         exclude: [
           /\.(e2e|spec)\.ts$/,
           /node_modules/,
-          /(ngfactory|ngstyle)\.js/
-        ]
-      }
-    ]
-  }
+          /(ngfactory|ngstyle)\.js/,
+        ],
+      },
+    ],
+  },
 };
 ```
 
@@ -138,20 +138,21 @@ module.exports = {
 `npm i -D istanbul-instrumenter-loader`
 
 - Add cypress code coverage plugin
-  
+
 `npm install -D @cypress/code-coverage`
 
 - Then add the code below to your supportFile and pluginsFile
 
 ```javascript
 // cypress/support/index.js
-import '@cypress/code-coverage/support'
+import '@cypress/code-coverage/support';
 // cypress/plugins/index.js
 module.exports = (on, config) => {
   require('@cypress/code-coverage/task')(on, config);
   return config;
 };
 ```
+
 source : https://github.com/skylock/cypress-angular-coverage-example
 
 ### Unit test
@@ -170,13 +171,9 @@ rules: [
     options: { esModules: true },
     enforce: 'post',
     include: path.join(__dirname, '../..', 'src'),
-    exclude: [
-      /\.(e2e|spec)\.ts$/,
-      /node_modules/,
-      /(ngfactory|ngstyle)\.js/
-    ]
-  }
-]
+    exclude: [/\.(e2e|spec)\.ts$/, /node_modules/, /(ngfactory|ngstyle)\.js/],
+  },
+];
 ```
 
 ### Report
@@ -213,11 +210,6 @@ This project only transpiles the library, to see it in action:
 
 - Install dependencies `npm i`
 - Compile the library `npm run build`
-- Pack it `npm pack`, you should have `cypress-angular-unit-test-0.0.0-development.tgz` file
-- Switch to the example project `cd examples/ng9`
-- Install `cypress-angular-unit-test` with `npm install -D ../../cypress-angular-unit-test-0.0.0-development.tgz`
-- Install dependencies `npm i`
-- Remove `node_modules` folder to avoid `Angular` conflicts : `mv ../../node_modules ../../no_modules`
 - Open Cypress with `npx cypress open`
 
 Pick any component test spec file to run
