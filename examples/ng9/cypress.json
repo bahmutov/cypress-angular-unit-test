@@ -1,9 +1,0 @@
-{
-  "experimentalComponentTesting": true,
-  "experimentalFetchPolyfill": true,
-  "componentFolder": "src",
-  "testFiles": "**/*cy-spec.*",
-  "fixturesFolder": false,
-  "includeShadowDom": true,
-  "fileServerFolder": "src"
-}
