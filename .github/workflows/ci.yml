@@ -21,9 +21,6 @@ jobs:
 
       - name: Test 🧪
         uses: cypress-io/github-action@v2
-        with:
-          working-directory: ./
-          build: npm run build:ci
 
       - name: Upload artifact ng9
         if: ${{ always() }}
