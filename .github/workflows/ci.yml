@@ -4,6 +4,11 @@ jobs:
   build:
     name: Tests
     runs-on: ubuntu-latest
+    # run all 4 jobs in parallel and split the tests among them
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3, 4]
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v2
@@ -18,6 +23,12 @@ jobs:
 
       - name: Test 🧪
         uses: cypress-io/github-action@v2
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        with:
+          record: true
+          parallel: true
+          group: 'component tests'
 
       - name: Upload artifact
         if: ${{ always() }}
