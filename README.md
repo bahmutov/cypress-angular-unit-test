@@ -1,4 +1,4 @@
-## cypress-angular-unit-test [![npm version](https://badge.fury.io/js/cypress-angular-unit-test.svg)](https://badge.fury.io/js/cypress-angular-unit-test) [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-6.1.0-brightgreen) [![ci status][ci image]][ci url]
+# cypress-angular-unit-test [![npm version](https://badge.fury.io/js/cypress-angular-unit-test.svg)](https://badge.fury.io/js/cypress-angular-unit-test) [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-6.1.0-brightgreen) [![ci status][ci image]][ci url]
 
 [![cypress-angular-unit-test](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/nf7zag/master&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/nf7zag/runs)
 
@@ -91,6 +91,7 @@ const componentService = getCypressTestBed().inject(SomeService);
 | [Only service](src/app/my-values.service.cy-spec.ts) | Test a service without a component                                                           |
 | [Web Component](src/app/use-custom-element)          | Test a custom element with shadow dom                                                        |
 | [Assets](src/app/assets-image)                       | `assets` folder accessible by Cypress                                                        |
+| [Routing](src/app/routing)                           | Test routing link                                                                            |
 
 ## Code coverage
 
@@ -155,7 +156,7 @@ module.exports = (on, config) => {
 };
 ```
 
-source : https://github.com/skylock/cypress-angular-coverage-example
+source : <https://github.com/skylock/cypress-angular-coverage-example>
 
 ### Unit test
 
@@ -198,7 +199,7 @@ I have successfully used this mounting approach to test components in other fram
 
 You can turn on debugging log by setting environment variable :
 
-```
+```bash
 // Unix
 export DEBUG="cypress-angular-unit-test,cypress:webpack:stats"
 
