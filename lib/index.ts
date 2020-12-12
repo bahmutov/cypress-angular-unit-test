@@ -1,18 +1,18 @@
+import { Type } from '@angular/core';
 import {
+  ComponentFixture,
   ComponentFixtureAutoDetect,
   getTestBed,
   TestBed,
   TestModuleMetadata,
-  ComponentFixture,
 } from '@angular/core/testing';
 import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
-import { ProxyComponent } from './proxy.component';
 import { CypressAngularConfig } from './config';
-import { Type } from '@angular/core';
 import { injectStylesBeforeElement } from './css-utils';
+import { ProxyComponent } from './proxy.component';
 
 let config = new CypressAngularConfig();
 
@@ -22,7 +22,7 @@ export function setConfig(c: CypressAngularConfig): void {
 
 function init<T>(
   component: Type<T>,
-  options?: TestModuleMetadata & CypressAngularConfig,
+  options?: Partial<TestModuleMetadata> & Partial<CypressAngularConfig>,
 ): void {
   Cypress.log({ displayName: 'Unit Test', message: ['Init Environment'] });
   checkIsComponentSpec();
@@ -41,7 +41,7 @@ function init<T>(
     providers.push({ provide: ComponentFixtureAutoDetect, useValue: true });
   }
   if (options) {
-    config = options;
+    config = { ...config, ...options };
     if (options.declarations) {
       declarations.push(...options.declarations);
     }
@@ -67,7 +67,7 @@ function init<T>(
 
 export function initEnv<T>(
   component: Type<T>,
-  options?: TestModuleMetadata & CypressAngularConfig,
+  options?: Partial<TestModuleMetadata> & Partial<CypressAngularConfig>,
 ): void {
   init(component, options);
   TestBed.compileComponents();
@@ -96,7 +96,7 @@ export function mount<T>(
 
 export function initEnvHtml<T>(
   component?: Type<T>,
-  options?: TestModuleMetadata & CypressAngularConfig,
+  options?: Partial<TestModuleMetadata> & Partial<CypressAngularConfig>,
 ): void {
   if (options) {
     if (options.declarations) {
