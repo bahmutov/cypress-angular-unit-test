@@ -31,7 +31,7 @@ const webpackOptions = {
             loader: 'angular2-template-loader',
           },
         ],
-        exclude: [/node_modules/],
+        exclude: [/node_modules/, /test.ts/, /polyfills.ts/],
       },
       {
         test: /\.(js|ts)$/,
