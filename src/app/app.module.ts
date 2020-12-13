@@ -2,9 +2,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { AddStyleComponent } from './add-style/add-style.component';
 import { AppComponent } from './app.component';
+import { AssetsImageComponent } from './assets-image/assets-image.component';
 import { BootstrapButtonComponent } from './bootstrap-button/bootstrap-button.component';
 import { HighlightDirective } from './directives/highlight/highlight.directive';
 import { HeroService } from './hero.service';
@@ -18,6 +20,10 @@ import { OnPushStratComponent } from './on-push-strat/on-push-strat.component';
 import { OutputSubscribeComponent } from './output-subscribe/output-subscribe.component';
 import { CapitalizePipe } from './pipes/capitalize/capitalize.pipe';
 import { PrimengButtonComponent } from './primeng-button/primeng-button.component';
+import { routes } from './routes';
+import { PageOneComponent } from './routing/page-one/page-one.component';
+import { RoutingComponent } from './routing/routing.component';
+import { ScssStyleComponent } from './scss-style/scss-style.component';
 import { ServiceStubComponent } from './service-stub/service-stub.component';
 import { UseCustomElementComponent } from './use-custom-element/use-custom-element.component';
 import { AssetsImageComponent } from './assets-image/assets-image.component';
@@ -44,12 +50,15 @@ import { TimeoutComponent } from './timeout/timeout.component';
     PrimengButtonComponent,
     ScssStyleComponent,
     TimeoutComponent,
+    RoutingComponent,
+    PageOneComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ButtonModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [HeroService, NetworkService],
   bootstrap: [AppComponent],
