@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc --project tsconfig.lib.json",
-    "watch": "tsc -w",
+    "watch": "tsc --project tsconfig.lib.json -w",
     "semantic-release": "semantic-release",
     "cy:open": "cypress open",
     "cy:run": "cypress run",

@@ -20,7 +20,10 @@ export function setConfig(c: CypressAngularConfig): void {
   config = c;
 }
 
-function init<T>(component: Type<T>, moduleDef?: TestModuleMetadata): void {
+function init<T>(
+  component: Type<T>,
+  options?: Partial<TestModuleMetadata> & Partial<CypressAngularConfig>,
+): void {
   Cypress.log({ displayName: 'Unit Test', message: ['Init Environment'] });
   checkIsComponentSpec();
 
@@ -37,19 +40,20 @@ function init<T>(component: Type<T>, moduleDef?: TestModuleMetadata): void {
   if (config.detectChanges) {
     providers.push({ provide: ComponentFixtureAutoDetect, useValue: true });
   }
-  if (moduleDef) {
-    if (moduleDef.declarations) {
-      declarations.push(...moduleDef.declarations);
+  if (options) {
+    config = { ...config, ...options };
+    if (options.declarations) {
+      declarations.push(...options.declarations);
     }
-    if (moduleDef.providers) {
-      providers.push(...moduleDef.providers);
+    if (options.providers) {
+      providers.push(...options.providers);
     }
   }
   TestBed.configureTestingModule({
     declarations,
-    imports: moduleDef ? moduleDef.imports : [],
+    imports: options ? options.imports : [],
     providers,
-    schemas: moduleDef ? moduleDef.schemas : [],
+    schemas: options ? options.schemas : [],
   });
 
   // @ts-ignore
@@ -63,9 +67,9 @@ function init<T>(component: Type<T>, moduleDef?: TestModuleMetadata): void {
 
 export function initEnv<T>(
   component: Type<T>,
-  moduleDef?: TestModuleMetadata,
+  options?: Partial<TestModuleMetadata> & Partial<CypressAngularConfig>,
 ): void {
-  init(component, moduleDef);
+  init(component, options);
   TestBed.compileComponents();
 }
 
@@ -92,18 +96,18 @@ export function mount<T>(
 
 export function initEnvHtml<T>(
   component?: Type<T>,
-  moduleDef?: TestModuleMetadata,
+  options?: Partial<TestModuleMetadata> & Partial<CypressAngularConfig>,
 ): void {
-  if (moduleDef) {
-    if (moduleDef.declarations) {
-      moduleDef.declarations.push(component);
+  if (options) {
+    if (options.declarations) {
+      options.declarations.push(component);
     } else {
-      moduleDef.declarations = [component];
+      options.declarations = [component];
     }
   } else {
-    moduleDef = { declarations: [component] };
+    options = { declarations: [component] };
   }
-  init(ProxyComponent, moduleDef);
+  init(ProxyComponent, options);
 }
 
 export function mountHtml(
