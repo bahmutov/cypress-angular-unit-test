@@ -26,6 +26,9 @@ import { RoutingComponent } from './routing/routing.component';
 import { ScssStyleComponent } from './scss-style/scss-style.component';
 import { ServiceStubComponent } from './service-stub/service-stub.component';
 import { UseCustomElementComponent } from './use-custom-element/use-custom-element.component';
+import { AssetsImageComponent } from './assets-image/assets-image.component';
+import { ScssStyleComponent } from './scss-style/scss-style.component';
+import { TimeoutComponent } from './timeout/timeout.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,7 @@ import { UseCustomElementComponent } from './use-custom-element/use-custom-eleme
     AssetsImageComponent,
     PrimengButtonComponent,
     ScssStyleComponent,
+    TimeoutComponent,
     RoutingComponent,
     PageOneComponent,
   ],

@@ -91,6 +91,7 @@ const componentService = getCypressTestBed().inject(SomeService);
 | [Only service](src/app/my-values.service.cy-spec.ts) | Test a service without a component                                                           |
 | [Web Component](src/app/use-custom-element)          | Test a custom element with shadow dom                                                        |
 | [Assets](src/app/assets-image)                       | `assets` folder accessible by Cypress                                                        |
+| [Async](src/app/timeout)                             | Async test with `cy.tick`                                                                    |
 | [Routing](src/app/routing)                           | Test routing link                                                                            |
 
 ## Code coverage

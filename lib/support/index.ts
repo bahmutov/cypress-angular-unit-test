@@ -1,5 +1,12 @@
 import 'zone.js/dist/zone';
 // @ts-ignore
+global.Mocha['__zone_patch__'] = false;
+import 'zone.js/dist/zone-testing';
+import 'zone.js/dist/async-test';
+import 'zone.js/dist/fake-async-test';
+import 'zone.js/dist/long-stack-trace-zone';
+import 'zone.js/dist/mocha-patch';
+// @ts-ignore
 const isComponentSpec = () => Cypress.spec.specType === 'component';
 
 // When running component specs, we cannot allow "cy.visit"
