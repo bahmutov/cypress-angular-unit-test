@@ -1,4 +1,5 @@
 const wp = require('@cypress/webpack-preprocessor');
+const AngularCompilerPlugin = require('@ngtools/webpack');
 import root from './helpers';
 import * as webpack from 'webpack';
 import * as path from 'path';
@@ -20,17 +21,7 @@ const webpackOptions = {
       {
         test: /\.ts$/,
         // loaders: ['ts-loader', 'angular2-template-loader'],
-        use: [
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true,
-            },
-          },
-          {
-            loader: 'angular2-template-loader',
-          },
-        ],
+        loader: '@ngtools/webpack',
         exclude: [/node_modules/, /test.ts/, /polyfills.ts/],
       },
       {
@@ -112,6 +103,11 @@ const webpackOptions = {
       /\@angular(\\|\/)core(\\|\/)f?esm5/,
       path.join(__dirname, './src'),
     ),
+    new AngularCompilerPlugin.AngularCompilerPlugin({
+      tsConfigPath: 'tsconfig.spec.json',
+      directTemplateLoading: true,
+      skipCodeGeneration: true,
+    }),
   ],
   performance: {
     hints: false,
