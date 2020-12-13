@@ -22,6 +22,7 @@ import { ServiceStubComponent } from './service-stub/service-stub.component';
 import { UseCustomElementComponent } from './use-custom-element/use-custom-element.component';
 import { AssetsImageComponent } from './assets-image/assets-image.component';
 import { ScssStyleComponent } from './scss-style/scss-style.component';
+import { TimeoutComponent } from './timeout/timeout.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ScssStyleComponent } from './scss-style/scss-style.component';
     AssetsImageComponent,
     PrimengButtonComponent,
     ScssStyleComponent,
+    TimeoutComponent,
   ],
   imports: [
     BrowserModule,
