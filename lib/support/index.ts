@@ -1,4 +1,5 @@
 import 'zone.js/dist/zone';
+// @ts-ignore
 global.Mocha['__zone_patch__'] = false;
 import 'zone.js/dist/zone-testing';
 import 'zone.js/dist/async-test';
