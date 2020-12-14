@@ -1,6 +1,5 @@
-# cypress-angular-unit-test [![npm version](https://badge.fury.io/js/cypress-angular-unit-test.svg)](https://badge.fury.io/js/cypress-angular-unit-test) [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-6.1.0-brightgreen) [![ci status][ci image]][ci url]
-
-[![cypress-angular-unit-test](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/nf7zag/master&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/nf7zag/runs)
+# cypress-angular-unit-test 
+[![npm version](https://badge.fury.io/js/cypress-angular-unit-test.svg)](https://badge.fury.io/js/cypress-angular-unit-test) [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-6.1.0-brightgreen) [![ci status][ci image]][ci url] [![cypress-angular-unit-test](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/nf7zag/master&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/nf7zag/runs)
 
 ## Installation
 
