@@ -15,14 +15,15 @@
   },
   "private": false,
   "files": [
-    "dist"
+    "dist",
+    "support.js"
   ],
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
   },
-  "main": "dist",
+  "main": "dist/index.js",
   "types": "dist",
   "homepage": "https://github.com/bahmutov/cypress-angular-unit-test#readme",
   "dependencies": {
