@@ -44,7 +44,7 @@
     "@angular/cli": "11.0.6",
     "@angular/compiler-cli": "11.0.7",
     "@angular/language-service": "11.0.7",
-    "@cypress/code-coverage": "3.9.0",
+    "@cypress/code-coverage": "3.9.1",
     "@cypress/webpack-preprocessor": "5.5.0",
     "@types/cypress-image-snapshot": "3.1.2",
     "@types/node": "8.10.66",
