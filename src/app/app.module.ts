@@ -21,14 +21,14 @@ import { OutputSubscribeComponent } from './output-subscribe/output-subscribe.co
 import { CapitalizePipe } from './pipes/capitalize/capitalize.pipe';
 import { PrimengButtonComponent } from './primeng-button/primeng-button.component';
 import { routes } from './routes';
+import { InlineSVGModule } from 'ng-inline-svg';
 import { PageOneComponent } from './routing/page-one/page-one.component';
 import { RoutingComponent } from './routing/routing.component';
 import { ScssStyleComponent } from './scss-style/scss-style.component';
 import { ServiceStubComponent } from './service-stub/service-stub.component';
 import { UseCustomElementComponent } from './use-custom-element/use-custom-element.component';
-import { AssetsImageComponent } from './assets-image/assets-image.component';
-import { ScssStyleComponent } from './scss-style/scss-style.component';
 import { TimeoutComponent } from './timeout/timeout.component';
+import { NgInlineSvgComponent } from './ng-inline-svg/ng-inline-svg.component';
 
 @NgModule({
   declarations: [
@@ -52,10 +52,12 @@ import { TimeoutComponent } from './timeout/timeout.component';
     TimeoutComponent,
     RoutingComponent,
     PageOneComponent,
+    NgInlineSvgComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    InlineSVGModule.forRoot(),
     BrowserAnimationsModule,
     ButtonModule,
     RouterModule.forRoot(routes),
