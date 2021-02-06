@@ -46,7 +46,7 @@
     "@angular/language-service": "11.1.2",
     "@cypress/code-coverage": "3.9.2",
     "@cypress/webpack-preprocessor": "5.5.0",
-    "@types/cypress-image-snapshot": "3.1.4",
+    "@types/cypress-image-snapshot": "3.1.5",
     "@types/node": "8.10.66",
     "angular-router-loader": "0.8.5",
     "angular2-template-loader": "0.6.2",
