@@ -54,7 +54,7 @@
     "cypress": "6.6.0",
     "cypress-angular-unit-test": "file:.",
     "cypress-image-snapshot": "4.0.1",
-    "html-loader": "2.1.1",
+    "html-loader": "2.1.2",
     "istanbul-instrumenter-loader": "3.0.1",
     "ngx-build-plus": "11.0.0",
     "raw-loader": "1.0.0",
