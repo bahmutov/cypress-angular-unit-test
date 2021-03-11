@@ -71,7 +71,7 @@
     "primeng": "11.3.0",
     "rxjs": "6.6.6",
     "tslib": "2.1.0",
-    "semantic-release": "17.4.1",
+    "semantic-release": "17.4.2",
     "core-js": "3.9.1"
   },
   "peerDependencies": {
