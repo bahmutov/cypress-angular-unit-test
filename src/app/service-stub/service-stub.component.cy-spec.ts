@@ -1,12 +1,20 @@
-/* tslint:disable:no-unused-variable */
 import { getCypressTestBed, initEnv, mount } from 'cypress-angular-unit-test';
 import { of } from 'rxjs';
+import { AppModule } from '../app.module';
 import { MyValuesService } from '../my-values.service';
 import { ServiceStubComponent } from './service-stub.component';
 
 describe('ServiceStubComponent', () => {
   it('No stub', () => {
     initEnv(ServiceStubComponent, { providers: [MyValuesService] });
+    mount(ServiceStubComponent);
+
+    cy.contains('first : val1');
+    cy.contains('second: val2Obs');
+  });
+
+  it('No stub app module', () => {
+    initEnv({ imports: [AppModule] });
     mount(ServiceStubComponent);
 
     cy.contains('first : val1');

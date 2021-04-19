@@ -1,4 +1,4 @@
-import { Type } from '@angular/core';
+import { NgModule, Type } from '@angular/core';
 import {
   ComponentFixture,
   ComponentFixtureAutoDetect,
@@ -21,7 +21,9 @@ export function setConfig(c: CypressAngularConfig): void {
 }
 
 function init<T>(
-  component: Type<T>,
+  component:
+    | Type<T>
+    | (Partial<TestModuleMetadata> & Partial<CypressAngularConfig>),
   options?: Partial<TestModuleMetadata> & Partial<CypressAngularConfig>,
 ): void {
   Cypress.log({ displayName: 'Unit Test', message: ['Init Environment'] });
@@ -33,28 +35,48 @@ function init<T>(
     BrowserDynamicTestingModule,
     platformBrowserDynamicTesting(),
   );
-
-  const declarations = [component];
-  const providers = [];
+  const module: TestModuleMetadata = {
+    declarations: [ProxyComponent],
+    imports: [],
+    providers: [],
+    schemas: [],
+  };
+  const isComp = component instanceof Type;
+  console.log(component);
+  if (isComp) {
+    module.declarations.push(component);
+  } else {
+    if (component.declarations) {
+      module.declarations.push(...component.declarations);
+    }
+    if (component.imports) {
+      module.imports.push(...component.imports);
+    }
+    if (component.providers) {
+      module.providers.push(...component.providers);
+    }
+    if (component.schemas) {
+      module.schemas.push(...component.schemas);
+    }
+  }
   // automatic component change detection
   if (config.detectChanges) {
-    providers.push({ provide: ComponentFixtureAutoDetect, useValue: true });
+    module.providers.push({
+      provide: ComponentFixtureAutoDetect,
+      useValue: true,
+    });
   }
   if (options) {
     config = { ...config, ...options };
     if (options.declarations) {
-      declarations.push(...options.declarations);
+      module.declarations.push(...options.declarations);
     }
     if (options.providers) {
-      providers.push(...options.providers);
+      module.providers.push(...options.providers);
     }
   }
-  TestBed.configureTestingModule({
-    declarations,
-    imports: options ? options.imports : [],
-    providers,
-    schemas: options ? options.schemas : [],
-  });
+  console.log(module);
+  TestBed.configureTestingModule(module);
 
   // @ts-ignore
   const document: Document = cy.state('document');
@@ -66,7 +88,10 @@ function init<T>(
 }
 
 export function initEnv<T>(
-  component: Type<T>,
+  component:
+    | Type<T>
+    | Partial<TestModuleMetadata>
+    | Partial<CypressAngularConfig>,
   options?: Partial<TestModuleMetadata> & Partial<CypressAngularConfig>,
 ): void {
   init(component, options);
@@ -95,19 +120,13 @@ export function mount<T>(
 }
 
 export function initEnvHtml<T>(
-  component?: Type<T>,
+  component?:
+    | Type<T>
+    | Partial<TestModuleMetadata>
+    | Partial<CypressAngularConfig>,
   options?: Partial<TestModuleMetadata> & Partial<CypressAngularConfig>,
 ): void {
-  if (options) {
-    if (options.declarations) {
-      options.declarations.push(component);
-    } else {
-      options.declarations = [component];
-    }
-  } else {
-    options = { declarations: [component] };
-  }
-  init(ProxyComponent, options);
+  init(component, options);
 }
 
 export function mountHtml(
