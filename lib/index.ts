@@ -1,4 +1,4 @@
-import { NgModule, Type } from '@angular/core';
+import { Type } from '@angular/core';
 import {
   ComponentFixture,
   ComponentFixtureAutoDetect,
@@ -71,7 +71,14 @@ function init<T>(
     if (options.providers) {
       providers.push(...options.providers);
     }
+    if (options.imports) {
+      imports.push(...options.imports);
+    }
+    if (options.schemas) {
+      schemas.push(...options.schemas);
+    }
   }
+  console.log(imports);
   TestBed.configureTestingModule({
     declarations,
     imports,

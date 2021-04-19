@@ -13,6 +13,7 @@ function insertStylesheets(
     link.type = 'text/css';
     link.rel = 'stylesheet';
     link.href = href;
+    const el = document.getElementById('root');
     document.body.insertBefore(link, el);
   });
 }
@@ -24,6 +25,7 @@ function insertStyles(styles: string[], document: Document, el: HTMLElement) {
   styles.forEach((style) => {
     const styleElement = document.createElement('style');
     styleElement.appendChild(document.createTextNode(style));
+    const el = document.getElementById('root');
     document.body.insertBefore(styleElement, el);
   });
 }
@@ -37,6 +39,7 @@ function insertSingleCssFile(
   cy.readFile(cssFilename, { log }).then((css) => {
     const style = document.createElement('style');
     style.appendChild(document.createTextNode(css));
+    const el = document.getElementById('root');
     document.body.insertBefore(style, el);
   });
 }
