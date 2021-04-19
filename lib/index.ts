@@ -35,33 +35,30 @@ function init<T>(
     BrowserDynamicTestingModule,
     platformBrowserDynamicTesting(),
   );
-  const module: TestModuleMetadata = {
-    declarations: [ProxyComponent],
-    imports: [],
-    providers: [],
-    schemas: [],
-  };
-  const isComp = component instanceof Type;
-  console.log(component);
-  if (isComp) {
-    module.declarations.push(component);
+  const declarations = [ProxyComponent];
+  const imports = [];
+  const providers = [];
+  const schemas = [];
+  if (component instanceof Type) {
+    // @ts-ignore
+    declarations.push(component);
   } else {
     if (component.declarations) {
-      module.declarations.push(...component.declarations);
+      declarations.push(...component.declarations);
     }
     if (component.imports) {
-      module.imports.push(...component.imports);
+      imports.push(...component.imports);
     }
     if (component.providers) {
-      module.providers.push(...component.providers);
+      providers.push(...component.providers);
     }
     if (component.schemas) {
-      module.schemas.push(...component.schemas);
+      schemas.push(...component.schemas);
     }
   }
   // automatic component change detection
   if (config.detectChanges) {
-    module.providers.push({
+    providers.push({
       provide: ComponentFixtureAutoDetect,
       useValue: true,
     });
@@ -69,14 +66,18 @@ function init<T>(
   if (options) {
     config = { ...config, ...options };
     if (options.declarations) {
-      module.declarations.push(...options.declarations);
+      declarations.push(...options.declarations);
     }
     if (options.providers) {
-      module.providers.push(...options.providers);
+      providers.push(...options.providers);
     }
   }
-  console.log(module);
-  TestBed.configureTestingModule(module);
+  TestBed.configureTestingModule({
+    declarations,
+    imports,
+    providers,
+    schemas,
+  });
 
   // @ts-ignore
   const document: Document = cy.state('document');
@@ -90,8 +91,7 @@ function init<T>(
 export function initEnv<T>(
   component:
     | Type<T>
-    | Partial<TestModuleMetadata>
-    | Partial<CypressAngularConfig>,
+    | (Partial<TestModuleMetadata> & Partial<CypressAngularConfig>),
   options?: Partial<TestModuleMetadata> & Partial<CypressAngularConfig>,
 ): void {
   init(component, options);
@@ -120,10 +120,9 @@ export function mount<T>(
 }
 
 export function initEnvHtml<T>(
-  component?:
+  component:
     | Type<T>
-    | Partial<TestModuleMetadata>
-    | Partial<CypressAngularConfig>,
+    | (Partial<TestModuleMetadata> & Partial<CypressAngularConfig>),
   options?: Partial<TestModuleMetadata> & Partial<CypressAngularConfig>,
 ): void {
   init(component, options);
