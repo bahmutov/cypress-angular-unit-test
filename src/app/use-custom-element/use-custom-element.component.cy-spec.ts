@@ -8,7 +8,7 @@ import { UseCustomElementComponent } from './use-custom-element.component';
 
 describe('AddStyleComponent', () => {
   it('component with custom element shadow dom', () => {
-    initEnv({ schemas: [CUSTOM_ELEMENTS_SCHEMA] });
+    initEnv(UseCustomElementComponent, { schemas: [CUSTOM_ELEMENTS_SCHEMA] });
     mount(UseCustomElementComponent);
     cy.contains('use-custom-element works!');
     cy.get('my-custom-element')

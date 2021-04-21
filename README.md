@@ -51,6 +51,10 @@ describe('AppComponent', () => {
   it('shows the input', () => {
     // Init Angular stuff
     initEnv(AppComponent);
+    // You can also :
+    // initEnv({declarations: [AppComponent]});
+    // initEnv({imports: [MyModule]});
+
     // component + any inputs object
     mount(AppComponent, { title: 'World' });
     // use any Cypress command afterwards
@@ -60,17 +64,6 @@ describe('AppComponent', () => {
 ```
 
 ![Demo](images/demo.gif)
-
-Under the hood, it's based on [TestBed](https://angular.io/api/core/testing/TestBed), you can use it by calling :
-
-```js
-getCypressTestBed();
-
-// Don't call TestBed.* directly in your spec !
-
-// So, to inject a Service you can do :
-const componentService = getCypressTestBed().inject(SomeService);
-```
 
 ## Examples
 
