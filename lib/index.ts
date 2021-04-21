@@ -78,7 +78,6 @@ function init<T>(
       schemas.push(...options.schemas);
     }
   }
-  console.log(imports);
   TestBed.configureTestingModule({
     declarations,
     imports,

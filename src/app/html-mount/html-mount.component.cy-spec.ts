@@ -19,11 +19,4 @@ describe('HtmlMountComponent', () => {
     cy.contains('works !');
     cy.contains('my input');
   });
-
-  it('mount work with AppModule', () => {
-    initEnvHtml({ imports: [AppModule] });
-    const fixture = mountHtml('<app-html-mount></app-html-mount>');
-    fixture.detectChanges();
-    cy.contains('works !');
-  });
 });

@@ -13,7 +13,7 @@ describe('ServiceStubComponent', () => {
     cy.contains('second: val2Obs');
   });
 
-  it('No stub app module', () => {
+  it('No stub with AppModule', () => {
     initEnv({ imports: [AppModule] });
     mount(ServiceStubComponent);
 

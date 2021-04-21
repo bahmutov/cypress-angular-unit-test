@@ -28,7 +28,7 @@ describe('PrimengButtonComponent', () => {
       .should('have.css', 'background-color', 'rgb(33, 150, 243)');
   });
 
-  it('should create with app module', () => {
+  it('should create with with AppModule', () => {
     initEnv({ imports: [AppModule] });
     const fixture = mount(PrimengButtonComponent);
     fixture.detectChanges();

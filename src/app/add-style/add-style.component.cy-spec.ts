@@ -16,7 +16,7 @@ describe('AddStyleComponent', () => {
       .should('have.css', 'background-color', 'rgb(0, 0, 255)');
   });
 
-  it('should create with app module', () => {
+  it('should create with AppModule', () => {
     initEnv({ imports: [AppModule] });
     mount(AddStyleComponent);
     cy.get('p')

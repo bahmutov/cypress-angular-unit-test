@@ -19,7 +19,7 @@ describe('MaterialButtonComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create with module', () => {
+  it('should create with AppModule', () => {
     initEnv({ imports: [AppModule] });
     const fixture = mount(MaterialButtonComponent);
     fixture.detectChanges();

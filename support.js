@@ -23,6 +23,7 @@ Cypress.Commands.overwrite('visit', (visit, ...args) => {
 
 beforeEach(() => {
   const html = `
+    <!DOCTYPE html>
     <head>
       <meta charset="UTF-8">
       <base href="/">

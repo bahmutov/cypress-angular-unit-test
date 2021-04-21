@@ -17,15 +17,4 @@ describe('AddStyleComponent', () => {
       .should('have.text', 'Custom element button')
       .should('have.css', 'color', 'rgb(255, 0, 0)');
   });
-
-  it('component with custom element shadow dom app module', () => {
-    initEnv({ imports: [AppModule] });
-    mount(UseCustomElementComponent);
-    cy.contains('use-custom-element works!');
-    cy.get('my-custom-element')
-      .shadow()
-      .get('button')
-      .should('have.text', 'Custom element button')
-      .should('have.css', 'color', 'rgb(255, 0, 0)');
-  });
 });
