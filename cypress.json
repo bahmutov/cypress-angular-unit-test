@@ -8,6 +8,6 @@
   "projectId": "nf7zag",
   "component": {
     "componentFolder": "src/app",
-    "testFiles": "**/*spec.{js,jsx,ts,tsx}"
+    "testFiles": "**/*cy-spec.ts"
   }
 }
