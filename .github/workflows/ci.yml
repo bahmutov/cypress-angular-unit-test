@@ -22,13 +22,9 @@ jobs:
         run: npm run build
 
       - name: Test 🧪
-        uses: cypress-io/github-action@v2
+        run: npx cypress run-ct --record --parallel
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-        with:
-          record: true
-          parallel: true
-          group: 'component tests'
 
       - name: Upload artifact
         if: ${{ always() }}

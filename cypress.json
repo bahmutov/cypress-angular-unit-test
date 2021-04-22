@@ -1,10 +1,13 @@
 {
-  "experimentalComponentTesting": true,
   "experimentalFetchPolyfill": true,
   "componentFolder": "src",
   "testFiles": "**/*cy-spec.*",
   "fixturesFolder": false,
   "includeShadowDom": true,
   "fileServerFolder": "src",
-  "projectId": "nf7zag"
+  "projectId": "nf7zag",
+  "component": {
+    "componentFolder": "src/app",
+    "testFiles": "**/*spec.{js,jsx,ts,tsx}"
+  }
 }
