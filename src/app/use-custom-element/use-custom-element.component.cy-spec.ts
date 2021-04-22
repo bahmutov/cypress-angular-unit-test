@@ -1,14 +1,15 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { initEnv, mount } from 'cypress-angular-unit-test';
-import { UseCustomElementComponent } from './use-custom-element.component';
+import { AppModule } from '../app.module';
 // You have to import your custom element
 // And in cypress.json activate "includeShadowDom" configuration
 import '../my-custom-element';
+import { UseCustomElementComponent } from './use-custom-element.component';
 
 describe('AddStyleComponent', () => {
   it('component with custom element shadow dom', () => {
     initEnv(UseCustomElementComponent, { schemas: [CUSTOM_ELEMENTS_SCHEMA] });
-    const fix = mount(UseCustomElementComponent);
+    mount(UseCustomElementComponent);
     cy.contains('use-custom-element works!');
     cy.get('my-custom-element')
       .shadow()
