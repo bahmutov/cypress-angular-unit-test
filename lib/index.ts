@@ -11,10 +11,13 @@ import {
   platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
 import { CypressAngularConfig } from './config';
-import { injectStylesBeforeElement } from './css-utils';
+import { injectStylesBeforeElement } from '@cypress/mount-utils';
 import { ProxyComponent } from './proxy.component';
 
-let config = new CypressAngularConfig();
+let config: CypressAngularConfig = {
+  detectChanges: true,
+  log: false,
+};
 
 export function setConfig(c: CypressAngularConfig): void {
   config = c;

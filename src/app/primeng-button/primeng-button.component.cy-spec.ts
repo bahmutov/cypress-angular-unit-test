@@ -7,7 +7,7 @@ import { PrimengButtonComponent } from './primeng-button.component';
 describe('PrimengButtonComponent', () => {
   beforeEach(() => {
     setConfig({
-      cssFiles: [
+      stylesheets: [
         'node_modules/primeng/resources/themes/saga-blue/theme.css',
         'node_modules/primeng/resources/primeng.min.css',
       ],
