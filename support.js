@@ -6,20 +6,9 @@ import 'zone.js/dist/async-test';
 import 'zone.js/dist/fake-async-test';
 import 'zone.js/dist/long-stack-trace-zone';
 import 'zone.js/dist/mocha-patch';
-// @ts-ignore
-const isComponentSpec = () => Cypress.spec.specType === 'component';
+import { setupHooks } from '@cypress/mount-utils';
 
-// When running component specs, we cannot allow "cy.visit"
-// because it will wipe out our preparation work, and does not make much sense
-// thus we overwrite "cy.visit" to throw an error
-Cypress.Commands.overwrite('visit', (visit, ...args) => {
-  if (isComponentSpec()) {
-    throw new Error('cy.visit from a component spec is not allowed');
-  } else {
-    // allow regular visit to proceed
-    return visit(...args);
-  }
-});
+setupHooks();
 
 beforeEach(() => {
   const html = `
