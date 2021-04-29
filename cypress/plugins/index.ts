@@ -1,12 +1,9 @@
-import * as cypressTypeScriptPreprocessor from './cy-ts-preprocessor';
 import { addMatchImageSnapshotPlugin } from 'cypress-image-snapshot/plugin';
-import root from './helpers';
 import * as webpack from 'webpack';
 import * as path from 'path';
 
 module.exports = (on, config) => {
   addMatchImageSnapshotPlugin(on, config);
-  on('file:preprocessor', cypressTypeScriptPreprocessor);
   const { startDevServer } = require('@cypress/webpack-dev-server');
 
   on('dev-server:start', (options) =>
@@ -17,7 +14,7 @@ module.exports = (on, config) => {
         devtool: 'inline-source-map',
         resolve: {
           extensions: ['.ts', '.js'],
-          modules: [root('src'), 'node_modules'],
+          modules: [path.join(__dirname, './src'), 'node_modules'],
         },
         module: {
           rules: [
@@ -71,7 +68,7 @@ module.exports = (on, config) => {
             {
               test: /\.html$/,
               loader: 'raw-loader',
-              exclude: [root('src/index.html')],
+              exclude: [path.join(__dirname, './src/index.html')],
             },
             {
               enforce: 'post',
@@ -80,7 +77,7 @@ module.exports = (on, config) => {
               query: {
                 esModules: true,
               },
-              include: root('src'),
+              include: path.join(__dirname, './src'),
               exclude: [/\.(e2e|spec|cy-spec)\.ts$/, /node_modules/],
             },
             {
