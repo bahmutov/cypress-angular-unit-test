@@ -10,11 +10,14 @@ module.exports = (on, config) => {
     startDevServer({
       options,
       webpackConfig: {
+        devServer: {
+          contentBase: path.join(__dirname, '../../src'),
+        },
         mode: 'development',
         devtool: 'inline-source-map',
         resolve: {
           extensions: ['.ts', '.js'],
-          modules: [path.join(__dirname, './src'), 'node_modules'],
+          modules: [path.join(__dirname, '../../src'), 'node_modules'],
         },
         module: {
           rules: [
@@ -68,17 +71,7 @@ module.exports = (on, config) => {
             {
               test: /\.html$/,
               loader: 'raw-loader',
-              exclude: [path.join(__dirname, './src/index.html')],
-            },
-            {
-              enforce: 'post',
-              test: /\.(js|ts)$/,
-              loader: 'istanbul-instrumenter-loader',
-              query: {
-                esModules: true,
-              },
-              include: path.join(__dirname, './src'),
-              exclude: [/\.(e2e|spec|cy-spec)\.ts$/, /node_modules/],
+              exclude: [path.join(__dirname, '../../src/index.html')],
             },
             {
               test: /\.(jpe?g|png|gif)$/i,
