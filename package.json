@@ -32,7 +32,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "0.1102.11",
     "@angular/animations": "11.2.12",
-    "@angular/cdk": "11.2.11",
+    "@angular/cdk": "11.2.12",
     "@angular/cli": "11.2.11",
     "@angular/common": "11.2.12",
     "@angular/compiler": "11.2.12",
@@ -41,7 +41,7 @@
     "@angular/forms": "11.2.12",
     "@angular/language-service": "11.2.12",
     "@angular/localize": "11.2.12",
-    "@angular/material": "11.2.11",
+    "@angular/material": "11.2.12",
     "@angular/platform-browser": "11.2.12",
     "@angular/platform-browser-dynamic": "11.2.12",
     "@angular/router": "11.2.12",
