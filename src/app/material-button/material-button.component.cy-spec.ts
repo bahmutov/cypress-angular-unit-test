@@ -7,7 +7,8 @@ import { AppModule } from '../app.module';
 describe('MaterialButtonComponent', () => {
   beforeEach(() => {
     setConfig({
-      cssFile: 'node_modules/@angular/material/prebuilt-themes/indigo-pink.css',
+      stylesheet:
+        'node_modules/@angular/material/prebuilt-themes/indigo-pink.css',
     });
   });
 

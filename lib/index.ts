@@ -11,10 +11,13 @@ import {
   platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
 import { CypressAngularConfig } from './config';
-import { injectStylesBeforeElement } from './css-utils';
+import { injectStylesBeforeElement } from '@cypress/mount-utils';
 import { ProxyComponent } from './proxy.component';
 
-let config = new CypressAngularConfig();
+let config: CypressAngularConfig = {
+  detectChanges: true,
+  log: false,
+};
 
 export function setConfig(c: CypressAngularConfig): void {
   config = c;
@@ -27,7 +30,6 @@ function init<T>(
   options?: Partial<TestModuleMetadata> & Partial<CypressAngularConfig>,
 ): void {
   Cypress.log({ displayName: 'Unit Test', message: ['Init Environment'] });
-  checkIsComponentSpec();
 
   TestBed.resetTestEnvironment();
 
@@ -108,8 +110,6 @@ export function mount<T>(
   component: Type<T>,
   inputs?: object,
 ): ComponentFixture<T> {
-  checkIsComponentSpec();
-
   // TODO improve logging using a full log instance
   Cypress.log({
     displayName: 'Unit Test',
@@ -137,8 +137,6 @@ export function initEnvHtml<T>(
 export function mountHtml(
   htmlTemplate: string,
 ): ComponentFixture<ProxyComponent> {
-  checkIsComponentSpec();
-
   Cypress.log({
     displayName: 'Unit Test',
     message: [`Mounting **${htmlTemplate}**`],
@@ -157,17 +155,4 @@ export function mountHtml(
 
 export function getCypressTestBed(): TestBed {
   return getTestBed();
-}
-
-function checkIsComponentSpec(): void {
-  if (!isComponentSpec()) {
-    throw new Error(
-      'Angular component test from an integration spec is not allowed',
-    );
-  }
-}
-
-// @ts-ignore
-function isComponentSpec(): boolean {
-  return Cypress.spec.specType === 'component';
 }

@@ -3,7 +3,7 @@ import { AppModule } from '../app.module';
 import { AssetsImageComponent } from './assets-image.component';
 
 describe('AssetsImageComponent', () => {
-  it('should create', () => {
+  it.skip('should create', () => {
     initEnv(AssetsImageComponent);
     mount(AssetsImageComponent);
     // add "fileServerFolder": "src" in cypress.json
@@ -21,7 +21,7 @@ describe('AssetsImageComponent', () => {
       });
   });
 
-  it('should create with AppModule', () => {
+  it.skip('should create with AppModule', () => {
     initEnv({ imports: [AppModule] });
     mount(AssetsImageComponent);
     // add "fileServerFolder": "src" in cypress.json
