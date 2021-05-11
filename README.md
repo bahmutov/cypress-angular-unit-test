@@ -55,6 +55,8 @@ module.exports = (on, config) => {
 
 The `webpack.config.ts` file is [here](cypress/plugins/webpack.config.ts)
 
+Run `npx cypress open-ct`
+
 ### Cypress < v7
 
 Enable experimental component testing mode in `cypress.json` and point at the spec files. Usually they are alongside your application files in `src` folder.
