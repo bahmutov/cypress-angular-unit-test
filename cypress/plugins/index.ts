@@ -10,9 +10,6 @@ module.exports = (on, config) => {
     startDevServer({
       options,
       webpackConfig: {
-        devServer: {
-          contentBase: path.join(__dirname, '../../src'),
-        },
         mode: 'development',
         devtool: 'inline-source-map',
         resolve: {
