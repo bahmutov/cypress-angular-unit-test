@@ -59,7 +59,6 @@
     "cypress-angular-unit-test": "file:.",
     "cypress-image-snapshot": "4.0.1",
     "html-loader": "2.1.2",
-    "html-webpack-plugin": "5.3.1",
     "husky": "4.3.8",
     "istanbul-instrumenter-loader": "3.0.1",
     "ng-inline-svg": "12.1.0",
