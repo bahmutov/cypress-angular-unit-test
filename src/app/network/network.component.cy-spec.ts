@@ -17,7 +17,7 @@ describe('Network', () => {
       cy.get('li').should('have.length', 3);
     });
   });
-  describe('No mock', () => {
+  describe('With mock', () => {
     beforeEach(() => {
       cy.intercept('/users?_limit=3', { body: [{ id: 1, name: 'foo' }] });
       initEnv(NetworkComponent, {
