@@ -50,7 +50,7 @@
     "@cypress/webpack-dev-server": "1.1.4",
     "@cypress/webpack-preprocessor": "5.8.0",
     "@types/cypress-image-snapshot": "3.1.5",
-    "@types/node": "8.10.66",
+    "@types/node": "14.17.0",
     "angular-router-loader": "0.8.5",
     "angular2-template-loader": "0.6.2",
     "codelyzer": "6.0.2",
