@@ -19,6 +19,14 @@ require('core-js/es7/reflect');
 require('cypress-angular-unit-test/support');
 ```
 
+### Webpack config
+
+Create a new file `webpack.config.ts` in `cypress/plugins` folder.
+You can find the file content here :
+
+- [Webpack v4.x](cypress/plugins/webpack4.config.ts)
+- [Webpack v5.x or Angular v12](cypress/plugins/webpack.config.ts)
+
 ### Cypress >= v7
 
 ```shell
@@ -53,8 +61,6 @@ module.exports = (on, config) => {
 };
 ```
 
-The `webpack.config.ts` file is [here](cypress/plugins/webpack.config.ts)
-
 Run `npx cypress open-ct`
 
 ### Cypress < v7
@@ -87,7 +93,7 @@ module.exports = (on, config) => {
 };
 ```
 
-The `webpack.config.ts` file is [here](cypress/plugins/webpack.config.ts)
+Run `npx cypress open`
 
 ## Use
 
