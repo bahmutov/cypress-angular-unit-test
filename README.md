@@ -25,7 +25,7 @@ Create a new file `webpack.config.ts` in `cypress/plugins` folder.
 You can find the file content here :
 
 - [Webpack v4.x](cypress/plugins/webpack4.config.ts)
-- [Webpack v5.x](cypress/plugins/webpack.config.ts)
+- [Webpack v5.x or Angular v12](cypress/plugins/webpack.config.ts)
 
 ### Cypress >= v7
 
