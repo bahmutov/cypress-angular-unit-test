@@ -5,7 +5,7 @@
 ## Installation
 
 ```shell
-npm install -D cypress cypress-angular-unit-test @cypress/webpack-preprocessor
+npm install -D cypress cypress-angular-unit-test
 ```
 
 Add to your support file
@@ -58,6 +58,10 @@ The `webpack.config.ts` file is [here](cypress/plugins/webpack.config.ts)
 Run `npx cypress open-ct`
 
 ### Cypress < v7
+
+```shell
+npm install -D @cypress/webpack-preprocessor
+```
 
 Enable experimental component testing mode in `cypress.json` and point at the spec files. Usually they are alongside your application files in `src` folder.
 
