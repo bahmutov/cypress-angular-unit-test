@@ -22,7 +22,7 @@ require('cypress-angular-unit-test/support');
 ### Cypress >= v7
 
 ```shell
-npm install -D @cypress/webpack-dev-server html-webpack-plugin
+npm install -D @cypress/webpack-dev-server
 ```
 
 Enable component testing in `cypress.json`.
