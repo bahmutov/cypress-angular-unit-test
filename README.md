@@ -47,7 +47,7 @@ Enable component testing in `cypress.json`.
 Configure `cypress/plugins/index.js` to transpile Angular code.
 
 ```javascript
-import * as webpackConfig from './webpack.config';
+const webpackConfig = require('./webpack.config');
 const { startDevServer } = require('@cypress/webpack-dev-server');
 
 module.exports = (on, config) => {
@@ -83,7 +83,7 @@ Configure `cypress/plugins/index.js` to transpile Angular code.
 
 ```javascript
 const wp = require('@cypress/webpack-preprocessor');
-import * as webpackOptions from './webpack.config';
+const webpackConfig = require('./webpack.config');
 module.exports = (on, config) => {
   const options = {
     webpackOptions,
