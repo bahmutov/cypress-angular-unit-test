@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -15,8 +14,8 @@ import { HeroService } from './hero.service';
 import { HtmlMountComponent } from './html-mount/html-mount.component';
 import { ImageSnapshotComponent } from './image-snapshot/image-snapshot.component';
 import { InputComponent } from './input/input.component';
-import { MaterialButtonComponent } from './material-button/material-button.component';
 import './my-custom-element';
+import { MyUiModule } from './my-ui.module';
 import { MyValuesService } from './my-values.service';
 import { NetworkService } from './network.service';
 import { NetworkComponent } from './network/network.component';
@@ -43,7 +42,6 @@ import { UseCustomElementComponent } from './use-custom-element/use-custom-eleme
     HighlightDirective,
     CapitalizePipe,
     ImageSnapshotComponent,
-    MaterialButtonComponent,
     BootstrapButtonComponent,
     AddStyleComponent,
     InputComponent,
@@ -63,7 +61,7 @@ import { UseCustomElementComponent } from './use-custom-element/use-custom-eleme
     InlineSVGModule.forRoot(),
     BrowserAnimationsModule,
     ButtonModule,
-    MatButtonModule,
+    MyUiModule,
     RouterModule.forRoot(routes),
   ],
   providers: [HeroService, NetworkService, MyValuesService],
