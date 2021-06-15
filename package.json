@@ -67,7 +67,7 @@
     "prettier": "2.3.1",
     "pretty-quick": "3.1.0",
     "primeng": "11.4.3",
-    "raw-loader": "1.0.0",
+    "raw-loader": "4.0.2",
     "rxjs": "7.1.0",
     "semantic-release": "17.4.3",
     "to-string-loader": "1.1.6",
