@@ -31,6 +31,9 @@ import { ScssStyleComponent } from './scss-style/scss-style.component';
 import { ServiceStubComponent } from './service-stub/service-stub.component';
 import { TimeoutComponent } from './timeout/timeout.component';
 import { UseCustomElementComponent } from './use-custom-element/use-custom-element.component';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './ngrx/counter.reducer';
+import { MyCounterComponent } from './ngrx/my-counter/my-counter.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,7 @@ import { UseCustomElementComponent } from './use-custom-element/use-custom-eleme
     RoutingComponent,
     PageOneComponent,
     NgInlineSvgComponent,
+    MyCounterComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +67,7 @@ import { UseCustomElementComponent } from './use-custom-element/use-custom-eleme
     ButtonModule,
     MyUiModule,
     RouterModule.forRoot(routes),
+    StoreModule.forRoot({ count: counterReducer }),
   ],
   providers: [HeroService, NetworkService, MyValuesService],
   bootstrap: [AppComponent],
