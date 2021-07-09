@@ -64,7 +64,7 @@
     "husky": "4.3.8",
     "istanbul-instrumenter-loader": "3.0.1",
     "ng-inline-svg": "13.0.0",
-    "ngx-build-plus": "12.0.1",
+    "ngx-build-plus": "12.2.0",
     "prettier": "2.3.2",
     "pretty-quick": "3.1.1",
     "primeng": "12.0.0",
