@@ -72,7 +72,7 @@
     "rxjs": "7.2.0",
     "semantic-release": "17.4.4",
     "to-string-loader": "1.1.6",
-    "ts-loader": "9.2.3",
+    "ts-loader": "9.2.4",
     "ts-node": "10.1.0",
     "tslib": "2.3.0",
     "tslint": "5.20.1",
