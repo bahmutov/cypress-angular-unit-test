@@ -55,7 +55,7 @@
     "angular-router-loader": "0.8.5",
     "angular2-template-loader": "0.6.2",
     "codelyzer": "6.0.2",
-    "core-js": "3.16.3",
+    "core-js": "3.16.4",
     "cypress": "8.3.1",
     "cypress-angular-unit-test": "file:.",
     "cypress-image-snapshot": "4.0.1",
