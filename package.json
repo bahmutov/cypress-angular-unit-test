@@ -46,7 +46,7 @@
     "@angular/platform-browser": "12.2.5",
     "@angular/platform-browser-dynamic": "12.2.5",
     "@angular/router": "12.2.5",
-    "@cypress/code-coverage": "3.9.10",
+    "@cypress/code-coverage": "3.9.11",
     "@cypress/webpack-dev-server": "1.6.0",
     "@cypress/webpack-preprocessor": "5.9.1",
     "@ngrx/store": "12.4.0",
