@@ -63,7 +63,7 @@
     "html-webpack-plugin": "5.3.2",
     "husky": "4.3.8",
     "istanbul-instrumenter-loader": "3.0.1",
-    "ng-inline-svg": "13.0.0",
+    "ng-inline-svg": "13.1.0",
     "ngx-build-plus": "12.2.0",
     "prettier": "2.4.1",
     "pretty-quick": "3.1.1",
