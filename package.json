@@ -55,7 +55,7 @@
     "cypress": "8.7.0",
     "cypress-angular-unit-test": "file:.",
     "cypress-image-snapshot": "4.0.1",
-    "html-loader": "2.1.2",
+    "html-loader": "3.0.1",
     "html-webpack-plugin": "5.5.0",
     "husky": "7.0.4",
     "istanbul-instrumenter-loader": "3.0.1",
