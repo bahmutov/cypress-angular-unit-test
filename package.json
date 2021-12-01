@@ -63,7 +63,7 @@
     "ngx-build-plus": "12.2.0",
     "prettier": "2.5.0",
     "pretty-quick": "3.1.2",
-    "primeng": "13.0.0",
+    "primeng": "13.0.1",
     "raw-loader": "1.0.0",
     "rxjs": "7.4.0",
     "semantic-release": "18.0.1",
