@@ -47,7 +47,7 @@
     "@cypress/webpack-preprocessor": "5.11.1",
     "@ngrx/store": "12.5.1",
     "@types/cypress-image-snapshot": "3.1.6",
-    "@types/node": "16.11.24",
+    "@types/node": "16.11.25",
     "angular-router-loader": "0.8.5",
     "angular2-template-loader": "0.6.2",
     "codelyzer": "6.0.2",
