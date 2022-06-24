@@ -66,7 +66,7 @@
     "primeng": "13.2.1",
     "raw-loader": "1.0.0",
     "rxjs": "7.5.5",
-    "semantic-release": "19.0.2",
+    "semantic-release": "19.0.3",
     "to-string-loader": "1.2.0",
     "ts-loader": "9.2.7",
     "ts-node": "10.6.0",
