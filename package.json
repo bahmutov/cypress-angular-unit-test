@@ -45,7 +45,7 @@
     "@cypress/code-coverage": "3.12.23",
     "@cypress/webpack-dev-server": "1.8.4",
     "@cypress/webpack-preprocessor": "5.17.1",
-    "@ngrx/store": "12.5.1",
+    "@ngrx/store": "18.1.0",
     "@types/cypress-image-snapshot": "3.1.9",
     "@types/node": "16.18.82",
     "angular-router-loader": "0.8.5",
